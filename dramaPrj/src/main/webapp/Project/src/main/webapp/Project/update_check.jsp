@@ -8,8 +8,8 @@
 	// 0. 한글 깨지는 문제 해결
 	request.setCharacterEncoding("utf-8");
 	// 1. form에서 보낸 비번, 이름, 이메일을 변수로 저장해주세요.
+	String fId = request.getParameter("fid");
 	String fPw = request.getParameter("fpw");
-	String fName = request.getParameter("fname");
 	String fNick = request.getParameter("fNick");
 	String fAge = request.getParameter("fAge");
 	String fCard = request.getParameter("fCard");
@@ -52,7 +52,7 @@
 	//DAO 생성
 	UserDAO dao = UserDAO.getInstance();
 	// update로직 호출
-	dao.updateCheck(sId, fPw, fName, fNick, fAge, fCard, fAdress);
+	dao.updateCheck(fId, fPw, fNick, fAge, fCard, fAdress);
 	
 	// 7. body태그에 XXX 회원의 정보가 수정되었습니다. 라고 안내해주고
 	// 웰컴페이지로 돌아갈 수 있는 링크 넣어주기.

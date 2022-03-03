@@ -59,7 +59,7 @@
 				session.setAttribute("session_id", uId);
 				session.setAttribute("session_pw", uPw);
 				// 로그인 성공 후 웰컴페이지로 보내주기
-				response.sendRedirect("intro.html");	
+				response.sendRedirect("login_welcome.jsp");	
 			} else {
 				out.println("<h1>비밀번호가 틀렸습니다. 다시 확인해주세요.</h1>");
 			}

@@ -1,4 +1,5 @@
 <%@page import="kr.co.ict.UserDAO"%>
+<%@page import="kr.co.ict.UserVO"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -48,10 +49,18 @@
 		out.println("회원가입이 완료되었습니다.");
 	}
 	*/
-	
+
 	// DAO로 대체
 	UserDAO dao = UserDAO.getInstance();
-	dao.insertUser(fId, fPw, fNick, fAge, fCard, fAdress);
+	UserVO user = dao.getUserData(fId);
+	System.out.println("DB에서 받아온 정보 : " + user);
+
+	if(user != null){
+		out.println("<h1>사용중인 아이디가 있습니다. 다시 확인해주세요.</h1>");
+	}else{
+		dao.insertUser(fId, fPw, fNick, fAge, fCard, fAdress);
+	}
+	
 %>
 <!DOCTYPE html>
 <html>

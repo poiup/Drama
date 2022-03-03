@@ -4,7 +4,6 @@ public class UserVO {
 	// VO는 특정 테이블의 자료를 자바형식으로 저장하기 위해 선언합니다.
 	// 그래서 SQL 데이터를 자바로 옮겨오기 위해서 
 	// 1. 담당할 테이블의 컬럼을 전부 변수로 만듭니다.
-	private String uName;
 	private String uId;
 	private String uPw;
 	private String uNick;
@@ -15,21 +14,6 @@ public class UserVO {
 	// 2. 생성자, getter, setter를 만들어주세요.
     // 우클릭 -> source -> generate setters and getters (setter, getter)
 	// 우클릭 -> source -> generate constructor using fields (생성자)
-	
-	public UserVO(String uName, String uId, String uPw, String uNick, String uAge, String uCard, String uAdress) {
-		super();
-		this.uName = uName;
-		this.uId = uId;
-		this.uPw = uPw;
-		this.uNick = uNick;
-		this.uAge = uAge;
-		this.uCard = uCard;
-		this.uAdress = uAdress;
-	}
-
-	public void setuName(String uName) {
-		this.uName = uName;
-	}
 
 	public String getuId() {
 		return uId;
@@ -78,16 +62,16 @@ public class UserVO {
 	public void setuAdress(String uAdress) {
 		this.uAdress = uAdress;
 	}
-
+	
 	// 3. (선택)toString을 만들어주세요.
-	// toString은 콘솔이나 화면에 UserVO를 찍었을때 주소대신 내부 데이터가 나오도록 해 줍니다.
-	// source -> generate toString()
-		
-	@Override
-	public String toString() {
-		return "UserVO [uName=" + uName + ", uId=" + uId + ", uPw=" + uPw + ", uNick=" + uNick + ", uAge=" + uAge
-				+ ", uCard=" + uCard + ", uAdress=" + uAdress + "]";
-	}
+		// toString은 콘솔이나 화면에 UserVO를 찍었을때 주소대신 내부 데이터가 나오도록 해 줍니다.
+		// source -> generate toString()
+			
+		@Override
+		public String toString() {
+			return "UserVO [uId=" + uId + ", uPw=" + uPw + ", uNick=" + uNick + ", uAge=" + uAge
+					+ ", uCard=" + uCard + ", uAdress=" + uAdress + "]";
+		}
 	
 }
 

@@ -76,11 +76,14 @@
 	input 태그에서 value 속성을 이용하면 미리 채워질 값을 지정할 수 있습니다.-->
 	<h1><%=sId %>계정의 정보를 수정합니다!</h1>
 	<form action="update_check.jsp" method="post">
+		<form action="update_check.jsp" method="post">
 		<input type="password" name="fpw" placeholder="비밀번호" required /><br/>
-		<input type="text" name="fnick" placeholder="이름" value="<%= user.getuNick() %>" required /><br/>
-		<input type="password" name="fpw" placeholder="비밀번호" value="<%= user.getuPw() %>" required /><br/>
+		<input type="text" name="fnick" placeholder="닉네임" required /><br/>
+		<input type="text" name="fcard" placeholder="카드" required /><br/>
+		<input type="text" name="fadress" placeholder="주소" required /><br/>
 		<input type="submit" value="수정하기">
 		<input type="reset" value="초기화">
+	</form>
 	</form>
 	
 </body>

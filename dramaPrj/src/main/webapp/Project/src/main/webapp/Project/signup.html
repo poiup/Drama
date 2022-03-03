@@ -9,7 +9,7 @@
   <title>K-Drama Site</title>
 </head>
 <body>
-   <form action="sign.html" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">                                                                                              
+   <form action="join_check.jsp" method="POST" class="joinForm">                                                                                              
     <h2>회원가입</h2>
     <div class="textForm">
       <input name="fid" type="text" class="id" placeholder="아이디">
@@ -18,16 +18,16 @@
       <input name="fpw" type="password" class="pw" placeholder="비밀번호">
     </div>
     <div class="textForm">
-      <input name="fnick" type="password" class="nickname" placeholder="닉네임">
+      <input name="fnick" type="text" class="nickname" placeholder="닉네임">
     </div>
      <div class="textForm">
-      <input name="fage" type="text" class="email" placeholder="나이">
+      <input name="fage" type="text" class="age" placeholder="나이">
     </div>
     <div class="textForm">
-      <input name="fCard" type="password" class="nickname" placeholder="카드번호">
+      <input name="fCard" type="text" class="card" placeholder="카드번호">
     </div>
     <div class="textForm">
-      <input name="fadress" type="text" class="cellphoneNo" placeholder="주소">
+      <input name="fadress" type="text" class="adress" placeholder="주소">
     </div>
     <input type="submit" class="btn" value="JOIN"/>
   </form>

@@ -65,7 +65,7 @@ body {
   background: none;
 }
 
-.email {
+.age {
   width: 100%;
   border:none;
   outline:none;
@@ -75,7 +75,7 @@ body {
   background: none;
 }
 
-.nickname {
+.card {
   width: 100%;
   border:none;
   outline:none;
@@ -85,7 +85,7 @@ body {
   background: none;
 }
 
-.cellphoneNo {
+.adress {
   width: 100%;
   border:none;
   outline:none;

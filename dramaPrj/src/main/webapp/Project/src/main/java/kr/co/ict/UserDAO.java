@@ -82,7 +82,6 @@ public class UserDAO {
 
 			// UserVO ArrayList에 rs에 든 모든 자료를 저장해주세요.
 			while(rs.next()) {
-				String uName = rs.getString("uname");
 				String uId = rs.getString("uid");
 				String uPw = rs.getString("upw");
 				String uNick = rs.getString("unick");
@@ -90,7 +89,13 @@ public class UserDAO {
 				String uCard = rs.getString("ucard");
 				String uAdress = rs.getString("uadress");
 				
-				UserVO userData = new UserVO(uName, uId, uPw, uNick, uAge, uCard, uAdress);
+				UserVO userData = new UserVO();
+				userData.setuAdress(uAdress);
+				userData.setuAge(uAge);
+				userData.setuCard(uCard);
+				userData.setuId(uId);
+				userData.setuNick(uNick);
+				userData.setuPw(uPw);
 				userList.add(userData);
 			}
 		} catch(Exception e) {
@@ -133,14 +138,22 @@ public class UserDAO {
 			rs = pstmt.executeQuery(); // DB에 쿼리문 날리고 자료 받아 rs에 저장하기.
 			// 4. rs에 저장된 데이터를 UserVO에 담습니다.
 			if(rs.next()) {
-				String uName = rs.getString("uname");
 				String uId = rs.getString("uid");
 				String uPw = rs.getString("upw");
 				String uNick = rs.getString("unick");
 				String uAge = rs.getString("uage");
 				String uCard = rs.getString("ucard");
 				String uAdress = rs.getString("uadress");
-				user = new UserVO(uName, uId, uPw, uNick, uAge, uCard, uAdress);
+				user = new UserVO();
+				user.setuAdress(uAdress);
+				user.setuAge(uAge);
+				user.setuCard(uCard);
+				System.out.println("니꺼 userVO.getid"+user.getuId());
+				user.setuId(uId);
+				System.out.println("니꺼 userVO.getid"+user.getuId());
+				user.setuNick(uNick);
+				user.setuPw(uPw);
+				
 			}
 		
 		// 5. catch, finally 블럭을 작성해주시고 finally에서 자원회수까지 마쳐주세요.
@@ -163,7 +176,7 @@ public class UserDAO {
 	// UPDATE구문을 실행하기 때문에 리턴 자료가 필요없고
 	// update_check.jsp에 있는 쿼리문을 실행하기 위해
 	// id, pw, name, email정보를 모두 받아옵니다.
-	public void updateCheck(String uId, String uPw, String uName, String uNick, String uAge,String uCard,String uAdress) {
+	public void updateCheck(String uId, String uPw, String uNick, String uAge,String uCard,String uAdress) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		// ResultSet은 SELECT구문에만 필요함.
@@ -171,15 +184,14 @@ public class UserDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql =  "UPDATE userinfo SET upw=?, uname=?, unick=?, uage=?, ucard=?, uadress=? WHERE uid=?";
+			String sql =  "UPDATE userinfo SET upw=?, unick=?, uage=?, ucard=?, uadress=? WHERE uid=?";
 			pstmt = con.prepareStatement(sql);// 쿼리문 세팅
 			pstmt.setString(1, uPw);
-			pstmt.setString(2, uName);
-			pstmt.setString(3, uNick);
-			pstmt.setString(4, uAge);
-			pstmt.setString(5, uCard);
-			pstmt.setString(6, uAdress);
-			pstmt.setString(7, uId);
+			pstmt.setString(2, uNick);
+			pstmt.setString(3, uAge);
+			pstmt.setString(4, uCard);
+			pstmt.setString(5, uAdress);
+			pstmt.setString(6, uId);
 						
 			pstmt.executeUpdate();//executeQuery(), executeUpdate();
 		

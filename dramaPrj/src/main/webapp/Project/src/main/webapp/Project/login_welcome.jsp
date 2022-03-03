@@ -23,7 +23,7 @@
 </head>
 <body>
 	<h1><%=sId %>님 접속을 환영합니다.</h1>
-	<a href="user_update.html">정보수정하기</a><br/>
+	<a href="login_update.jsp">정보수정하기</a><br/>
 	<a href="sign.html">로그아웃하기</a><br/> <!-- 세션 파기 후 login_form.jsp로 보내주세요. 
 	login_form.jsp도 만약 로그인한 사용자가 접근하면 welcome페이지로 보내도록 로직을 살짝 수정해주세요.-->
 	<a href="intro.html">회원탈퇴하기</a><br/><!-- 회원 탈퇴를 위해 member_out.jsp를 만들어보겠습니다. -->

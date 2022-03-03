@@ -30,19 +30,6 @@ form {
   color: rgba(255, 255, 255, 0.2);
 }
 
-h2 {
-  padding-left: 12px;
-  font-size: 22px;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  letter-spacing: 2px;
-  display: inline-block;
-  font-weight: 100;
-}
-
-h2:first-child {
-  padding-left: 0px;
-}
 
 span {
   text-transform: uppercase;
@@ -91,12 +78,6 @@ input {
   display: inline-block;
   padding-top: 20px;
   font-size: 14px;
-}
-
-h2,
-span,
-.custom-checkbox {
-  margin-left: 20px;
 }
 
 .custom-checkbox {
