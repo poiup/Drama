@@ -27,28 +27,36 @@ create table dramainfo(
 create table actor(
 	actname varchar(10) not null,
     actnum int auto_increment primary key,
-    foreign key (dnum) references dramainfo(dnum)
+    dnum int not null,
+    FOREIGN KEY(dnum) REFERENCES dramainfo (dnum)
 );
 
 create table favorite(
+	unum int not null,
 	foreign key (unum) references userinfo(unum),
+    dnum int not null,
     foreign key (dnum) references dramainfo(dnum),
     favnum int auto_increment primary key,
     favdate date not null
 );
 
 create table buyinfo(
+	unum int not null,
 	foreign key (unum) references userinfo(unum),
+    dnum int not null,
     foreign key (dnum) references dramainfo(dnum),
 	buynum int auto_increment primary key,
     buydate date not null
 );
 
 create table drama_comment(
+	unum int not null,
 	foreign key (unum) references userinfo(unum),
+    dnum int not null,
     foreign key (dnum) references dramainfo(dnum),
 	comtcont varchar(100),
     comtdate date,
     comtrate int,
     comtnum int auto_increment primary key
 );
+
