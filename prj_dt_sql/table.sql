@@ -9,7 +9,7 @@ create table userinfo(
     ucredit varchar(16) not null,
     uadress varchar(60),
     unick varchar(15),
-    upoint int
+    upoint int default 0
 );
 
 create table dramainfo(
@@ -46,7 +46,7 @@ create table buyinfo(
     dnum int not null,
     foreign key (dnum) references dramainfo(dnum),
 	buynum int auto_increment primary key,
-    buydate date not null
+    buydate datetime default now()
 );
 
 create table drama_comment(
@@ -55,7 +55,7 @@ create table drama_comment(
     dnum int not null,
     foreign key (dnum) references dramainfo(dnum),
 	comtcont varchar(100),
-    comtdate date,
+    comtdate datetime default now(),
     comtrate int,
     comtnum int auto_increment primary key
 );
