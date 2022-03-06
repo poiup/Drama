@@ -8,13 +8,22 @@ public class UserVO {
 	private String uPw;
 	private String uNick;
 	private String uAge;
-	private String uCard;
-	private String uAdress;
+	private String uCredit;
+	private String uAddress;
 	
 	// 2. 생성자, getter, setter를 만들어주세요.
     // 우클릭 -> source -> generate setters and getters (setter, getter)
 	// 우클릭 -> source -> generate constructor using fields (생성자)
-
+	public UserVO(String uId, String uPw, String uNick, String uAge, String ucredit, String uAddress) {
+		super();
+		this.uId = uId;
+		this.uPw = uPw;
+		this.uNick = uNick;
+		this.uAge = uAge;
+		this.uCredit = ucredit;
+		this.uAddress = uAddress;
+	}
+	
 	public String getuId() {
 		return uId;
 	}
@@ -47,20 +56,20 @@ public class UserVO {
 		this.uAge = uAge;
 	}
 
-	public String getuCard() {
-		return uCard;
+	public String getUcredit() {
+		return uCredit;
 	}
 
-	public void setuCard(String uCard) {
-		this.uCard = uCard;
+	public void setuCard(String uCredit) {
+		this.uCredit = uCredit;
 	}
 
-	public String getuAdress() {
-		return uAdress;
+	public String getuAddress() {
+		return uAddress;
 	}
 
-	public void setuAdress(String uAdress) {
-		this.uAdress = uAdress;
+	public void setuAdress(String uAddress) {
+		this.uAddress = uAddress;
 	}
 	
 	// 3. (선택)toString을 만들어주세요.
@@ -70,7 +79,7 @@ public class UserVO {
 		@Override
 		public String toString() {
 			return "UserVO [uId=" + uId + ", uPw=" + uPw + ", uNick=" + uNick + ", uAge=" + uAge
-					+ ", uCard=" + uCard + ", uAdress=" + uAdress + "]";
+					+ ", uCredit=" + uCredit + ", uAddress=" + uAddress + "]";
 		}
 	
 }

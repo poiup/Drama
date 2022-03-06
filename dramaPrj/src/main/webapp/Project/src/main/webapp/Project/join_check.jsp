@@ -10,9 +10,9 @@
 	String fPw = request.getParameter("fpw");
 	String fNick = request.getParameter("fnick");
 	String fAge = request.getParameter("fage");
-	String fCard = request.getParameter("fcard");
-	String fAdress = request.getParameter("fAdress");
-	
+	String fCredit = request.getParameter("fcredit");
+	String fAddress = request.getParameter("faddress");
+	System.out.println("1. fAddress : " + fAddress);
 	/*	
 	// 위의 사용자가 입력한 데이터를 토대로
 	// 스크립트릿 내부에서 DB연동을 한 다음 INSERT 구문을 실행하도록 만들면 회원가입 절차 구현 가능
@@ -58,7 +58,7 @@
 	if(user != null){
 		out.println("<h1>사용중인 아이디가 있습니다. 다시 확인해주세요.</h1>");
 	}else{
-		dao.insertUser(fId, fPw, fNick, fAge, fCard, fAdress);
+		dao.insertUser(fId, fPw, fNick, fAge, fCredit, fAddress);
 	}
 	
 %>
