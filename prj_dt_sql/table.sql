@@ -12,6 +12,7 @@ create table userinfo(
     upoint int default 0
 );
 
+
 create table dramainfo(
 	dname varchar(20) not null,
     dprice int not null,
@@ -60,3 +61,25 @@ create table drama_comment(
     comtnum int auto_increment primary key
 );
 
+
+-- 어드민 유저
+insert into userinfo (uid,upw,uname,uage,ucredit,uadress,unick) value ("admin", "1234", "어드민", 28, "1111111111111111", "경기도 고양시", "admin");  
+
+
+-- 테이블 체크
+select * from favorite;
+select * from buyinfo;
+select * from actor;
+select * from drama_comment;
+select * from dramainfo;
+select * from userinfo;
+
+
+
+-- 테이블 싹 날릴때 순서대로 실행하면 됩니다.
+drop table favorite;
+drop table buyinfo;
+drop table actor;
+drop table drama_comment;
+drop table dramainfo;
+drop table userinfo;
