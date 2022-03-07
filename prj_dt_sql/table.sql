@@ -64,7 +64,7 @@ create table drama_comment(
 
 -- 어드민 유저
 insert into userinfo (uid,upw,uname,uage,ucredit,uadress,unick) value ("admin", "1234", "어드민", 28, "1111111111111111", "경기도 고양시", "admin");  
-
+insert into dramainfo values (1);
 
 -- 테이블 체크
 select * from favorite;
