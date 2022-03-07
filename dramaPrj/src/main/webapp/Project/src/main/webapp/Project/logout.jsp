@@ -3,7 +3,7 @@
 <%
 	// 세션이 있건 없건 세션 삭제 후 form으로 보내주면 됨
 	session.invalidate();
-	response.sendRedirect("login_form.jsp");
+	response.sendRedirect("intro.html");
 %>
 <!DOCTYPE html>
 <html>

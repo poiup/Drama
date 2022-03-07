@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 폼을 만들어주세요. 폼의 목적지는 join_check.jsp입니다. 
-	userinfo 테이블에 작성된대로 아이디, 비밀번호, 이름, 이메일을 가입요소로 받습니다.
-	name속성까지 맞춰주시고, submit버튼까지 함께 작성해주요.-->
 	<h1>회원 가입 페이지</h1>
 	<form action="join_check.jsp" method="post">
 		아이디 : <input type="text" name="fid" placeholder="아이디" required /><br/>
