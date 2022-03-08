@@ -31,32 +31,32 @@ create table actor(
 	actname varchar(10) not null,
     actnum int auto_increment primary key,
     dnum int not null,
-    FOREIGN KEY(dnum) REFERENCES dramainfo (dnum)
+    CONSTRAINT FOREIGN KEY(dnum) REFERENCES dramainfo (dnum) ON DELETE CASCADE
 );
 
 create table favorite(
 	unum int not null,
-	foreign key (unum) references userinfo(unum),
+	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
     dnum int not null,
-    foreign key (dnum) references dramainfo(dnum),
+    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
     favnum int auto_increment primary key,
     favdate date not null
 );
 
 create table buyinfo(
 	unum int not null,
-	foreign key (unum) references userinfo(unum),
+	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
     dnum int not null,
-    foreign key (dnum) references dramainfo(dnum),
+    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
 	buynum int auto_increment primary key,
     buydate datetime default now()
 );
 
 create table drama_comment(
 	unum int not null,
-	foreign key (unum) references userinfo(unum),
+	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
     dnum int not null,
-    foreign key (dnum) references dramainfo(dnum),
+    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
 	comtcont varchar(100),
     comtdate datetime default now(),
     comtrate int,
@@ -68,7 +68,7 @@ create table drama_comment(
 insert into userinfo (uid,upw,uname,uage,ucredit,uadress,unick) value ("admin", "1234", "어드민", 28, "1111111111111111", "경기도 고양시", "admin");  
 insert into dramainfo values ('1',2,'3',now(),1,null,'4','5','1234567');
 insert into drama_comment (unum,dnum,comtcont,comtrate) value(1,1,'댓글내용',5);
-insert into actor (actname,dnum) value ("1",1);
+insert into actor (actname,dnum) value ("1",2);
 
 -- 테이블 체크
 select * from favorite;
@@ -77,6 +77,8 @@ select * from actor;
 select * from drama_comment;
 select * from dramainfo;
 select * from userinfo;
+
+SELECT * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo);
 
 -- 테이블 싹 날릴때 순서대로 실행하면 됩니다.
 drop table favorite;
