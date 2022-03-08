@@ -1,23 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<form action="/dramaPrj/dramaInsert" method="post">
-		<input type="text" name="dname" placeholder="Á¦¸ñ" /><br/>
-		<input type="number" name="dprice" placeholder="°¡°İ" /><br/>
-		<input type="text" name="dgenre" placeholder="Àå¸£" /><br/>
-		<input type="date" name="ddate" placeholder="¹æ¿µÀÏ" /><br/>
-		<input type="number" name="dage" placeholder="³ªÀÌµî±Ş" /><br/>
-		<input type="file" name="dthumb" placeholder="¼¶³×ÀÏ" /><br/>
-		<input type="file" name="dvideo" placeholder="¿µ»ó" /><br/>
-		<input type="text" name="actname" placeholder="ÁÖ¿¬¹è¿ì" /><br/>
+		<input type="text" name="dname" placeholder="ì œëª©" /><br/>
+		<input type="number" name="dprice" placeholder="ê°€ê²©" /><br/>
+		<input type="text" name="dgenre" placeholder="ì¥ë¥´" /><br/>
+		<input type="date" name="ddate" placeholder="ë°©ì˜ì¼" /><br/>
+		<input type="number" name="dage" placeholder="ë‚˜ì´ë“±ê¸‰" /><br/>
+		<input type="file" name="dthumb" placeholder="ì„¬ë„¤ì¼" /><br/>
+		<input type="file" name="dvideo" placeholder="ì˜ìƒ" /><br/>
+		<input type="text" name="actname" placeholder="ì£¼ì—°ë°°ìš°" /><br/>
 		<textarea cols="50" rows="10" name="dtext"></textarea><br/>
-		<input type="submit" value="È®ÀÎ">
+		<input type="submit" value="í™•ì¸">
 	</form>
 </body>
 </html>

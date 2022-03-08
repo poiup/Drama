@@ -34,6 +34,8 @@ public class dramaInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// form으로 전송하는 데이터들
+		request.setCharacterEncoding("utf-8");
 		String dname = request.getParameter("dname");
 		int dpric = Integer.parseInt(request.getParameter("dprice"));
 	    String dgenre = request.getParameter("dgenre");
@@ -42,16 +44,14 @@ public class dramaInsertServlet extends HttpServlet {
 	    String dthumb = request.getParameter("dthumb");
 	    String dvideo = request.getParameter("dvideo");
 	    String dtext = request.getParameter("dtext");
-	    String actname = request.getParameter("actname");
-		
-		
+	    String actnames = request.getParameter("actname");
+	    String[] actname = actnames.split(",");
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 		dramainfoDAO diDAO = dramainfoDAO.getInstance();
-		actorDAO aDAO = actorDAO.getInstance();
 		try {
-			// 드라마 정보 저장
-			diDAO.dramaInsert(dname,dpric,dgenre,ddate,dage,dthumb,dvideo,dtext);
-			// 배우 정보저장
-			aDAO.actorInsert(actname);
+			// 드라마 정보 저장, 배우정보 저장
+			diDAO.dramaInsert(dname,dpric,dgenre,ddate,dage,dthumb,dvideo,dtext,actname);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

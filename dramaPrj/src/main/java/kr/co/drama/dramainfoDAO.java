@@ -31,7 +31,7 @@ public class dramainfoDAO {
 		return dao;
 	}
 	
-	public void dramaInsert	(String dname, int dprice, String dgenre, String ddate, int dage, String dthumb, String dvideo, String dtext) throws SQLException {
+	public void dramaInsert	(String dname, int dprice, String dgenre, String ddate, int dage, String dthumb, String dvideo, String dtext, String[] actname) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try { 
@@ -50,6 +50,25 @@ public class dramainfoDAO {
 			pstmt.setString(8, dtext);			
 			//쿼리 실행
 			int insert = pstmt.executeUpdate();
+			// 배우 이름이 null이 아니라면 실행
+			if(actname!=null) {
+				// 제일 높은 dnum( 제일 최근생성된 dnum)을 가져옴 
+				sql = "SELECT * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
+				pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				int dnum = rs.getInt("dnum");
+				// 제일 최근생성된 dnum을 외래키로 넣어주고 actname을 넣음
+				// , 를 기준으로 잘라 이름을 배열로 저장해 향상된 for문을 돌려 여러 배우를 나눠서 저장
+				for(String name : actname) {
+					sql = "insert into actor (actname, dnum) value (?,?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, name);
+					pstmt.setInt(2, dnum);
+					insert = pstmt.executeUpdate();
+				}
+				rs.close();
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally{

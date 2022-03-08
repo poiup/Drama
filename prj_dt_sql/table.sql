@@ -1,7 +1,7 @@
 use team_prj;
 
 create table userinfo(
-	uid varchar(20) unique,
+	uid varchar(20) unique not null,
     upw varchar(20) not null,
     uname varchar(20) not null,
     uage int not null,
@@ -24,6 +24,8 @@ create table dramainfo(
     dvideo varchar(30) not null,
     dtext varchar(300)
 );
+
+
 
 create table actor(
 	actname varchar(10) not null,
@@ -64,7 +66,9 @@ create table drama_comment(
 
 -- 어드민 유저
 insert into userinfo (uid,upw,uname,uage,ucredit,uadress,unick) value ("admin", "1234", "어드민", 28, "1111111111111111", "경기도 고양시", "admin");  
-insert into dramainfo values (1);
+insert into dramainfo values ('1',2,'3',now(),1,null,'4','5','1234567');
+insert into drama_comment (unum,dnum,comtcont,comtrate) value(1,1,'댓글내용',5);
+insert into actor (actname,dnum) value ("1",1);
 
 -- 테이블 체크
 select * from favorite;
@@ -73,8 +77,6 @@ select * from actor;
 select * from drama_comment;
 select * from dramainfo;
 select * from userinfo;
-
-
 
 -- 테이블 싹 날릴때 순서대로 실행하면 됩니다.
 drop table favorite;
