@@ -26,14 +26,15 @@
 <body>
 	<h1><%=sId %>님의 정보를 수정합니다!</h1>
 	<form action="update_check.jsp" method="post">
-		<input type="password" name="fpw" placeholder="비밀번호" value="<%= user.getuPw() %>" required /><br/>
-		<input type="text" name="fnick" placeholder="닉네임" value="<%= user.getuNick() %>"required /><br/>
-		<input type="text" name="fage" placeholder="나이" value="<%= user.getuAge() %>"required /><br/>
-		<input type="text" name="fcredit" placeholder="카드" value="<%= user.getUcredit() %>"required /><br/>
-		<input type="text" name="faddress" placeholder="주소" value="<%= user.getuAddress() %>"required /><br/>
-		<br/>
-		<input type="submit" value="수정하기">
-		<input type="button" value="탈퇴하기" onClick="location.href='member_out.jsp'">
+	<input type="password" name="fpw" placeholder="비밀번호" value="<%= user.getuPw() %>" required /><br/>
+	<input type="text" name="fnick" placeholder="닉네임" value="<%= user.getuNick() %>"required /><br/>
+	<input type="text" name="fage" placeholder="나이" value="<%= user.getuAge() %>"required /><br/>
+	<input type="text" name="fcredit" placeholder="카드" value="<%= user.getUcredit() %>"required /><br/>
+	<input type="text" name="faddress" placeholder="주소" value="<%= user.getuAddress() %>"required /><br/>
+	<br/>
+	<input type="submit" value="수정하기">
+	<input type="button" value="탈퇴하기" onClick="location.href='member_out.jsp'">
+	</form>
 </body>
 </html>
 
