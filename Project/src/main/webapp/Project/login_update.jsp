@@ -61,7 +61,7 @@
    	</div>
 	<br/>
 	<input type="submit" value="수정하기">
-	<input type="button" value="탈퇴하기" onClick="location.href='out.html'">
+	<input type="button" value="탈퇴하기" onClick="location.href='http://localhost:8181/Project/Project/out.jsp'">
 	</form>
 </body>
 </html>

@@ -31,6 +31,14 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String fId = request.getParameter("fid");
 		String fPw = request.getParameter("fpw");
@@ -54,23 +62,18 @@ public class login extends HttpServlet {
 					request.getSession().setAttribute("session_id", fId);
 					request.getSession().setAttribute("session_pw", fPw);
 					
-					RequestDispatcher dp = request.getRequestDispatcher("/Project/intro2.html");
+					RequestDispatcher dp = request.getRequestDispatcher("/Project/intro2.jsp");
 					dp.forward(request, response);
 				} else {
-					System.out.println("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+					
+					System.out.println(uPw + "비밀번호가 틀렸습니다. 다시 확인해주세요.");
+					response.sendRedirect("http://localhost:8181/Project/Project/errorPw.jsp");
+					
 				}
 				
 			} else {
 				System.out.println("아이디가 없습니다.입력 아이디 또는 비밀번호를 확인해주세요.");
+				response.sendRedirect("http://localhost:8181/Project/Project/errorId.jsp");
 			}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

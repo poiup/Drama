@@ -31,6 +31,6 @@
 </head>
 <body>
 	<h1><%= sId %>님의 정보가 수정되었습니다.</h1>
-	<a href="intro2.html">메인페이지로 돌아가기.</a>
+	<a href="intro2.jsp">메인페이지로 돌아가기.</a>
 </body>
 </html>

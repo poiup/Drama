@@ -30,6 +30,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="sign.html">로그인창으로 이동하기</a>
+	<a href="sign.jsp">로그인창으로 이동하기</a>
 </body>
 </html>
