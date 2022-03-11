@@ -54,7 +54,7 @@ public class dramainfoDAO {
 			// 배우 이름이 null이 아니라면 실행
 			if(actname!=null) {
 				// 제일 높은 dnum( 제일 최근생성된 dnum)을 가져옴 
-				sql = "SELECT * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
+				sql = "SELCET * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
 				pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
@@ -88,14 +88,12 @@ public class dramainfoDAO {
 			// db연결
 			con = ds.getConnection();
 			//쿼리 작성
-			String sql = "SELECET * FROM dramainfo WHERE dnum = ?";
+			String sql = "SELECT * FROM dramainfo WHERE dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, dnum);
 			
 			//쿼리 실행
-			rs = pstmt.executeQuery();
-			// 배우 이름이 null이 아니라면 실행
-			
+			rs = pstmt.executeQuery();	
 			if(rs.next()) {
 				String dname = rs.getString("dname");
 				int dprice = rs.getInt("dprice"); 
@@ -126,7 +124,7 @@ public class dramainfoDAO {
 			// db연결
 			con = ds.getConnection();
 			//쿼리 작성
-			String sql = "UPDATE dramainfo SET dname = ?, dprice = ?, dgenre = ?, ddate = ?, dage = ?, dthumb = ?, dvideo = ?, dtext = ? WEHRE dnum = ?";
+			String sql = "UPDATE dramainfo SET dname = ?, dprice = ?, dgenre = ?, ddate = ?, dage = ?, dthumb = ?, dvideo = ?, dtext = ? WHERE dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dname);
 			pstmt.setInt(2, dprice);
@@ -140,15 +138,40 @@ public class dramainfoDAO {
 			//쿼리 실행
 			int insert = pstmt.executeUpdate();
 			// 배우 이름이 null이 아니라면 실행
-			if(actname!=null) {
-				for(String name : actname) {
-					sql = "insert into actor (actname, dnum) value (?,?)";
+			List<actorVO> actorList = actorDAO.getInstance().actorList(dnum);
+			if(actorList!=null) {
+				int i =0;
+				for(actorVO actor : actorList) {
+					sql = "UPDATE actor SET actname=? WHERE actnum=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, name);
-					pstmt.setInt(2, dnum);
+					pstmt.setString(1, actname[i]);
+					pstmt.setInt(2, actor.getActnum());
 					insert = pstmt.executeUpdate();
+					System.out.println(pstmt);
+					i++;
 				}
 			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally{
+			con.close();
+			pstmt.close();
+		}
+	}
+
+	
+	public void dramaDelete(int dnum) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try { 
+			// db연결
+			con = ds.getConnection();
+			//쿼리 작성
+			String sql = "DELETE FROM dramainfo WHERE dnum = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dnum);
+			//쿼리 실행
+			int insert = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally{

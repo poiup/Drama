@@ -3,7 +3,7 @@ import java.sql.Date;
 
 public class dramainfoVO {
 	private String dname;
-	private int dpric; 
+	private int dprice; 
     private String dgenre; 
     private Date ddate;
     private int dage; 
@@ -12,11 +12,11 @@ public class dramainfoVO {
     private String dvideo;
     private String dtext;
     
-	public dramainfoVO(String dname, int dpric, String dgenre, Date ddate, int dage, int dnum, String dthumb,
+	public dramainfoVO(String dname, int dprice, String dgenre, Date ddate, int dage, int dnum, String dthumb,
 			String dvideo, String dtext) {
 		super();
 		this.dname = dname;
-		this.dpric = dpric;
+		this.dprice = dprice;
 		this.dgenre = dgenre;
 		this.ddate = ddate;
 		this.dage = dage;
@@ -34,12 +34,12 @@ public class dramainfoVO {
 		this.dname = dname;
 	}
 
-	public int getDpric() {
-		return dpric;
+	public int getDprice() {
+		return dprice;
 	}
 
-	public void setDpric(int dpric) {
-		this.dpric = dpric;
+	public void setDpric(int dprice) {
+		this.dprice = dprice;
 	}
 
 	public String getDgenre() {
@@ -100,7 +100,7 @@ public class dramainfoVO {
 
 	@Override
 	public String toString() {
-		return "dramainfoVO [dname=" + dname + ", dpric=" + dpric + ", dgenre=" + dgenre + ", ddate=" + ddate
+		return "dramainfoVO [dname=" + dname + ", dpric=" + dprice + ", dgenre=" + dgenre + ", ddate=" + ddate
 				+ ", dage=" + dage + ", dnum=" + dnum + ", dthumb=" + dthumb + ", dvideo=" + dvideo + ", dtext=" + dtext
 				+ "]";
 	}

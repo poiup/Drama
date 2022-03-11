@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>작성페이지</title>
 </head>
 <body>
 	<form action="/dramaPrj/dramaInsert" method="post">

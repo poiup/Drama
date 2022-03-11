@@ -1,0 +1,48 @@
+diff a/prj_dt_sql/table.sql b/prj_dt_sql/table.sql	(rejected hunks)
+@@ -25,38 +25,36 @@
+     dtext varchar(300)
+ );
+ 
+-
+-
+ create table actor(
+ 	actname varchar(10) not null,
+     actnum int auto_increment primary key,
+-    dnum int not null,
+-    CONSTRAINT FOREIGN KEY(dnum) REFERENCES dramainfo (dnum) ON DELETE CASCADE
++    dnum int not null,board_info
++    FOREIGN KEY(dnum) REFERENCES dramainfo (dnum)
+ );
+ 
+ create table favorite(
+ 	unum int not null,
+-	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
++	foreign key (unum) references userinfo(unum),
+     dnum int not null,
+-    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
++    foreign key (dnum) references dramainfo(dnum),
+     favnum int auto_increment primary key,
+     favdate date not null
+ );
+ 
+ create table buyinfo(
+ 	unum int not null,
+-	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
++	foreign key (unum) references userinfo(unum),
+     dnum int not null,
+-    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
++    foreign key (dnum) references dramainfo(dnum),
+ 	buynum int auto_increment primary key,
+     buydate datetime default now()
+ );
+ 
+ create table drama_comment(
+ 	unum int not null,
+-	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,
++	foreign key (unum) references userinfo(unum),
+     dnum int not null,
+-    CONSTRAINT foreign key (dnum) references dramainfo(dnum) ON DELETE CASCADE,
++    foreign key (dnum) references dramainfo(dnum),
+ 	comtcont varchar(100),
+     comtdate datetime default now(),
+     comtrate int,
