@@ -160,11 +160,7 @@ public class dramainfoDAO {
 		}
 	}
 
-<<<<<<< HEAD
 	//드라마 삭제
-=======
-	
->>>>>>> af57021b18e3c57c31236c2c5cc5a05531d2b93b
 	public void dramaDelete(int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
