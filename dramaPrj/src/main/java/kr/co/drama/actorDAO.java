@@ -33,6 +33,10 @@ public class actorDAO {
 		return dao;
 	}
 	
+<<<<<<< HEAD
+	// 배우 리스트 받아오기
+=======
+>>>>>>> af57021b18e3c57c31236c2c5cc5a05531d2b93b
 	public List<actorVO> actorList (int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -59,7 +63,10 @@ public class actorDAO {
 				actorVO actorinfo = new actorVO(actname, actnum, dNum);
 				actorList.add(actorinfo);
 			}
+<<<<<<< HEAD
+=======
 			System.out.println(actorList.toString());
+>>>>>>> af57021b18e3c57c31236c2c5cc5a05531d2b93b
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally{

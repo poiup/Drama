@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/dramaPrj/dramaUpdate" method="post">
+	<form action="/dramaPrj/dramaDetail.do" method="post">
 		<input type="text" name="dnum">
 		<input type="submit">
 	</form>
-	
 </body>
 </html>

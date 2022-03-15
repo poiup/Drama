@@ -116,7 +116,8 @@ public class dramainfoDAO {
 		}
 		return dramaDetail;
 	}
-
+	
+	// 드라마 수정
 	public void dramaUpdate(String dname, int dprice, String dgenre, String ddate, int dage, String dthumb, String dvideo, String dtext, String[] actname, int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -159,7 +160,11 @@ public class dramainfoDAO {
 		}
 	}
 
+<<<<<<< HEAD
+	//드라마 삭제
+=======
 	
+>>>>>>> af57021b18e3c57c31236c2c5cc5a05531d2b93b
 	public void dramaDelete(int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
