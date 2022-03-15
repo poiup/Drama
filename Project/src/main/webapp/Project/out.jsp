@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="login">
-    <form action="out_check2.jsp" method="post">
+    <form action="/Project/out_check2" method="post">
       <input type="text" class="text" name="fid">
        <span>userid</span>
       <br>  

@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="intro.css" rel="stylesheet"/>
+  <link href="Project/intro.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Dokdo&family=Nanum+Myeongjo:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
   <title>K-Drama Site</title>
+
 </head>
 <body>
   <div class="container">
@@ -15,10 +17,10 @@
       <h1><a href="#">K-Drama</a></h1>
       <div class="nav">
         <ul>
-        	<td><input type="text" class="form-control" style='text-align:center'
-			placeholder="Search" name="searchText" maxlength="100"></td>
-			<td><button type="submit" class="btn btn-success">Search</button></td>
-			
+        	<td><input type="text" class="form-control"
+			placeholder="검색어 입력" name="searchText" maxlength="100" style='text-align:center'></td>
+			<td><button type="submit" class="btn btn-success">검색</button></td>
+
           <li><a href="#" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
           <li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
          <li><a href="#" onMouseOver='this.innerHTML="평점"' onMouseOut='this.innerHTML="Grade"'>Grade</a></li>

@@ -16,9 +16,9 @@
       <h1><a href="#">K-Drama</a></h1>
       <div class="nav">
        <ul>
-        	<td><input type="text" class="form-control" style='text-align:center'
-			placeholder="Search" name="searchText" maxlength="100" ></td>
-			<td><button type="submit" class="btn btn-success">Search</button></td>
+        	<td><input type="text" class="form-control"
+			placeholder="검색어 입력" name="searchText" maxlength="100" style='text-align:center'></td>
+			<td><button type="submit" class="btn btn-success">검색</button></td>
 			
           <li><a href="#" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
           <li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>

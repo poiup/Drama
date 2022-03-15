@@ -10,7 +10,7 @@
   <title>K-Drama Site</title>
 </head>
 <body>
-   <form action="join_check.jsp" method="POST" class="joinForm">                                                                                              
+   <form action="/Project/join_check" method="POST" class="joinForm">                                                                                              
     <h2>회원가입</h2>
     <div class="textForm">
       <input name="fid" type="text" class="id" placeholder="아이디">

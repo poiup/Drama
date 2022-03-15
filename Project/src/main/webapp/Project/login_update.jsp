@@ -10,7 +10,7 @@
 	String sId = (String)session.getAttribute("session_id");
 	if(sId == null){
 		// 로그인 안 한 사람이 해당 주소를 얻어서 접속한 경우
-		response.sendRedirect("login_form.jsp");
+		response.sendRedirect("sign.jsp");
 	}
 	
 	UserDAO dao = UserDAO.getInstance();
