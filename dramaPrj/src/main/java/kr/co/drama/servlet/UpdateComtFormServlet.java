@@ -1,7 +1,7 @@
 package kr.co.drama.servlet;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +14,16 @@ import kr.co.drama.drama_commentDAO;
 import kr.co.drama.drama_commentVO;
 
 /**
- * Servlet implementation class commentListServlet
+ * Servlet implementation class UpdateComtFormServlet
  */
-@WebServlet("/commentList")
-public class commentListServlet extends HttpServlet {
+@WebServlet("/UpdateComtForm")
+public class UpdateComtFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public commentListServlet() {
+    public UpdateComtFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +32,28 @@ public class commentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		drama_commentDAO dao = drama_commentDAO.getInstance();
-		
-		List<drama_commentVO> comtList = dao.getAllcomtList();
-		
-		request.setAttribute("comtList", comtList);
-		
-		RequestDispatcher dp = request.getRequestDispatcher("/comment/comment_list.jsp");
-		dp.forward(request, response);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String comtnum = request.getParameter("comtnum");
+		int cNum = Integer.parseInt(comtnum);
+		
+		drama_commentDAO dao = drama_commentDAO.getInstance();
+		// 2. BoardVO가져오기
+		drama_commentVO comtList = dao.getComtDetail(cNum);
+		// 3. 가져온 데이터 바인딩
+		request.setAttribute("comtList", comtList);
+		// 4. 목적지로 포워딩
+		RequestDispatcher dp = request.getRequestDispatcher("comment/comment_updateForm.jsp");
+		dp.forward(request, response);
+		
+		
 	}
 
 }

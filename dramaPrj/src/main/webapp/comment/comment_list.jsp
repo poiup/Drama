@@ -11,24 +11,29 @@
 <body>
 	<table class="table table-hover">
 		<tr>
-			<th>댓글번호</th>
 			<th>유저번호</th>
-			<th>드라마번호</th>
 			<th>댓글내용</th>
-			<th>작성일시</th>
 			<th>평점</th>
-			<th>삭제 & 수정</th>
+			<th>작성일시</th>
+			
 		</tr>
 		<c:forEach var="comt" items="${comtList }">
 			<tr>
-				<td>${comt.comtnum}</td>
 				<td>${comt.unum}</td>
-				<td>${comt.dnum}</td>
 				<td>${comt.comtcont}</td>
-				<td>${comt.comtdate}</td>
 				<td>${comt.comtrate}</td>
-				<td><a href="">삭제</a>&nbsp &nbsp<a href="">수정</a></td>
-			</tr>
+				<td>${comt.comtdate}</td>
+				<td>
+					<form action="http://localhost:8181/dramaPrj/DeleteComt" method="post">
+						<input type="hidden" name="comtnum" value="${comt.comtnum }">
+						<input type="submit" value="삭제">
+					</form>
+					<form action="http://localhost:8181/dramaPrj/UpdateComtForm" method="post" >
+						<input type="hidden" name="comtnum" value="${comt.comtnum }">
+						<input type="submit" value="수정">
+					</form>
+				</td>
+			</tr> 
 		</c:forEach>
 	</table>
 	
