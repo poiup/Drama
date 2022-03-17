@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +9,7 @@
 	body {background-image : url('https://m.skbroadband.com/common/img/vin/btv/btv_visual05.png');
 	   background-repeat: no-repeat;
 	   background-position: center center;
-	   background-size: 600px 500px;
+	   background-size: 600px 550px;
 	   color : white;}
 </style>
 </head>

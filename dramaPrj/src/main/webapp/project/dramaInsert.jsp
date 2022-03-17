@@ -9,7 +9,7 @@
 	body {background-image : url('https://m.skbroadband.com/common/img/vin/btv/btv_visual05.png');
 	   background-repeat: no-repeat;
 	   background-position: center center;
-	   background-size: 600px 500px;
+	   background-size: 600px 550px;
 	   color : white;}
 	
 </style>
