@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.drama.servlet.service.IDramaService;
+import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
@@ -85,6 +86,10 @@ public class FrontController extends HttpServlet {
 			ui = "/project/dramatest.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsertForm.do")) {
 			ui = "/project/dramaInsert.jsp";
+		} else if(uri.equals("/dramaPrj/dramaBuy.do")) {
+			sv = new dramaBuyService();
+			sv.execute(request, response);
+			ui = "/dramaDetail.do";
 		}
 		
 		
