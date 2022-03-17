@@ -45,11 +45,11 @@ public class UpdateComtFormServlet extends HttpServlet {
 		int cNum = Integer.parseInt(comtnum);
 		
 		drama_commentDAO dao = drama_commentDAO.getInstance();
-		// 2. BoardVO가져오기
+		
 		drama_commentVO comtList = dao.getComtDetail(cNum);
-		// 3. 가져온 데이터 바인딩
+	
 		request.setAttribute("comtList", comtList);
-		// 4. 목적지로 포워딩
+		
 		RequestDispatcher dp = request.getRequestDispatcher("comment/comment_updateForm.jsp");
 		dp.forward(request, response);
 		

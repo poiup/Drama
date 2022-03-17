@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="http://localhost:8181/dramaPrj/InsertComt" method="post">
+	<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
 		<input type="text" name="unum" placeholder="유저넘버" value="${comtList.unum }">
 		<input type="text" name="dnum" placeholder="드라마넘버">
 		<input type="text" name="comtcont" placeholder="댓글">
