@@ -39,11 +39,9 @@ public class buyinfoDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, unum);			
 			pstmt.setInt(2, dnum);	
-			
 			//쿼리 실행
-			pstmt.executeUpdate();
 			
-			// 추후 결제 방법 상의 후 인증 후 결제 진행 코드 삽입 예정
+			pstmt.executeUpdate();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -52,4 +50,33 @@ public class buyinfoDAO {
 			pstmt.close();
 		}
 	}
+	
+	//유저 카드 번호 받아오는 메서드
+	public String getucredit(int unum) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String ucredit = null;
+		ResultSet rs = null;
+		try { 
+			// db연결
+			con = ds.getConnection();
+			//쿼리 작성
+			String select_ucredit_sql = "SELECT * FROM userinfo WHERE unum = ?";
+			pstmt = con.prepareStatement(select_ucredit_sql);
+			pstmt.setInt(1, unum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ucredit = rs.getString("ucredit");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally{
+			con.close();
+			pstmt.close();
+			rs.close();
+		}
+		return ucredit;
+	}
 }
+	
+
