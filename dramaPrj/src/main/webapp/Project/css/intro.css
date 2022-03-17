@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -75,4 +76,13 @@ transition: all .4s;
 .container .hero button:hover{
   background-color: darkslategray;
 
+}
+
+.user_nav {
+	display: inline_block;
+	float: right;
+}
+
+.user_nav li{
+	float: left
 }

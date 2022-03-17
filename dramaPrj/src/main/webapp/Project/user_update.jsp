@@ -10,55 +10,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/custom2.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h1>${user.unick }님의 정보를 수정합니다!</h1><br/>
-	<form action="/dramaPrj/loginUpdate.do" method="post">
+	<h1>${sId }님의 정보를 수정합니다!</h1><br/>
+	<form action="update_check.jsp" method="post">
 	
     <div class="form-group">
         <label for="password">비밀번호<br/></label>
-        <input type="password" class="form-control" name="fpw"
-        placeholder="비밀번호" value="${user.upw }" required /><br/>
+        <input type="password" class="form-control" name="fpw" value="${user.upw }" placeholder="비밀번호"  required /><br/>
     </div>
     <br/>
     <div class="form-group">
         <label for="text">닉네임<br/></label>
         <input type="text" class="form-control" name="fnick"
-       placeholder="닉네임" value="${user.unick }" required /><br/>
+       placeholder="닉네임" required /><br/>
     </div>
     <br/>
     <div class="form-group">
         <label for="text">이름<br/></label>
         <input type="text" class="form-control" name="fname"
-       placeholder="이름" value="${user.uname }" required /><br/>
+       placeholder="이름" required /><br/>
     </div>
     <br/>
     <div class="form-group">
         <label for="text">나이<br/></label>
         <input type="text" class="form-control" name="fage"
-       placeholder="나이" value="${user.uage }"required /><br/>
+       placeholder="나이" required /><br/>
     </div>
     <br/>
    	<div class="form-group">
-        <label for="text">카드번호<br/></label>
+        <label for="text">카드<br/></label>
         <input type="text" class="form-control" name="fcredit"
-       placeholder="카드" value="${user.ucredit }"required /><br/>
+       placeholder="카드" required /><br/>
    	</div>
    	<br/>
    	<div class="form-group">
         <label for="text">주소<br/></label>
-        <input type="text" class="form-control" name="fadress"
-       placeholder="주소" value="${user.uadress }"required /><br/>
+        <input type="text" class="form-control" name="faddress"
+       placeholder="주소" required /><br/>
    	</div>
 	<br/>
-	<input type="hidden" name = "fid" value = "${user.uid }">
 	<input type="submit" value="수정하기">
-	<input type="button" value="탈퇴하기" onClick="location.href='http://localhost:8181/dramaPrj/memberOut.do'">
+	<input type="button" value="탈퇴하기" onClick="location.href='http://localhost:8181/Project/Project/out.jsp'">
 	</form>
 </body>
 </html>
