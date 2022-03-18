@@ -21,6 +21,7 @@ import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
+
 import kr.co.drama.servlet.service.dramaUpdateService;
 
 /**
@@ -96,6 +97,7 @@ public class FrontController extends HttpServlet {
 			sv = new dramaBuyService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
+
 		} 
 		
 		
@@ -103,6 +105,12 @@ public class FrontController extends HttpServlet {
 			sv = new ComtListService();
 			sv.execute(request, response);
 			ui = "/project/comment_list.jsp";
+
+		} 
+		else if(uri.equals("/dramaPrj/commentList.do")) {
+			sv = new ComtListService();
+			sv.execute(request, response);
+			ui = "/comment/comment_list.jsp";
 		} else if(uri.equals("/dramaPrj/InsertComt.do")) {
 			sv = new ComtInsertService();
 			sv.execute(request, response);
