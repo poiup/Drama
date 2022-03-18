@@ -14,20 +14,32 @@
 <head>
 <meta charset="UTF-8">
 
-<style>
-	table{
-		border-spacing: 0px;
-		width: 50%;
-	}
-	td{
-		border: solid 1px black;
-	}
-</style>
 <title>Insert title here</title>
 </head>
 	
 <body>
 
+      <div align="center" id="searchBox">
+      	<form action="/dramaPrj/dramaSearch.do" method="post">
+	      	
+		      <input type="text" 
+		      id="twotabsearchtextbox"  
+		      class="searchSelect" 
+		      name="keywords" 
+		      value="" size="50" 
+		      title="Search for" 
+		      style="width:50%; 
+		      background-color: #FFF;"
+		       />
+		      <span>
+		      	<input name="button"
+		      	type="submit" >
+		      </span>
+		      
+	      </form>
+      </div>
+      
+      
  <div class="container" >
       <div class="row" align="center">
       
