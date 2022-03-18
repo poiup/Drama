@@ -1,53 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+=======
+>>>>>>> 5f44e06d875b37d018fecb020352509425a9e24f
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	* {margin: 0; padding: 0; }
-	div{border : solid 1px #000;}
-	.container {border:none}
-	.Ddetail_img{height:300px}
-	.Ddetail_img img {width : 100%; height :100%}
-	.Dtitle_wrap {height : 20%}
-	.Dtext_wrap{height: 80%}
-	.Ddate_wrap{text-align:right}
+	body {background-image : url('https://m.skbroadband.com/common/img/vin/btv/btv_visual05.png');
+	   background-repeat: no-repeat;
+	   background-position: center center;
+	   background-size: 600px 550px;
+	   color : white;}
 </style>
 </head>
 <body>
-
-	<div class="container ">
-		<div class="row g-0">
-			<div class="col-4 Ddetail_img">
-
-				<img alt="테스트 이미지" src="${dramaDetail.dthumb }">
-			</div> 
-			<div class="col-8">
-				<div class = "row Dtitle_wrap g-0">
-					<div class= "col-9">				
-						<h2 class="drama_title">${dramaDetail.dname }</h2>
-					</div>
-					<div class="col-3"><p class="drama_genre">${dramaDetail.dgenre }</p></div>
-				</div>	
-				<div class = "row Dtext_wrap g-0" >
-					<p>${dramaDetail.dtext }</p>
-				</div>	
-			</div> 
-			<div class = "row g-0">
-				<div class="col-6"><span>${dramaDetail.dprice }</span></div>
-				<!-- 아래 div에 평점을 넣어주세요. 댓글 평점의 평균을 내서 넣어주시면 됩니다. -->
-				<div class="col-3"></div>
-				<div class="col-1"><span>${dramaDetail.dage }</span></div>
-				<div class="col-2 Ddate_wrap"><span>${dramaDetail.ddate }</span></div>
-			</div>
-		</div>
-	</div>
-	<form action="/dramaPrj/dramaUpdateForm.do" method="post">
-		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
-		<input type="submit" value="수정">
-	</form>
+	<table align="center" border="1">
+<form>
+    <h2 align="center">Drama Detail</h2>
+    <tr><td>섬네일</td><td> <input type="image" src="${dramaDetail.dthumb }" alt="테스트이미지"><br/></td></tr>
+    <tr><td>제목</td><td><input type="text" name="dname" value="${dramaDetail.dname }"/><br/></td></tr>
+    <tr><td>장르</td><td><input type="text" name="drama_genre" value="${dramaDetail.dgenre }"/><br/></td></tr>
+    <tr><td>가격</td><td><input type="text" name="dprice" value="${dramaDetail.dprice }"/><br/></td></tr>
+    <tr><td>나이등급</td><td><input type="number" name="dage"  value="${dramaDetail.dage }"/><br/></td></tr>
+    <tr><td>방영일</td><td><input type="date" name="ddate" value="${dramaDetail.ddate }"/><br/></td></tr>
+    <tr><td>줄거리</td><td><textarea cols="70" rows="10" style="overflow-y: scroll;"></textarea></td></tr> 
+</form>
+</table>
+<table align="center">
+    <tr><td>
+        <form action="/dramaPrj/dramaDelete.do" method="post"></form>
+        <tr><td>
+    <input type="submit" value="확인">
+    </td></tr>
+</table>
 </body>
 </html>
