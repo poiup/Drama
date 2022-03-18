@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>댓글 수정창</h1>
-		<form action="http://localhost:8181/dramaPrj/UpdateComt" method="post">
+		<form action="http://localhost:8181/dramaPrj/UpdateComt.do" method="post">
 		<input type="hidden" name="comtnum" value="${comtList.comtnum }">
 		<input type="hidden" name="unum" value="${comtList.unum }">
 		<input type="hidden" name="dnum" value="${comtList.dnum }">

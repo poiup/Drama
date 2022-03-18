@@ -162,8 +162,7 @@ private drama_commentDAO() {
 
 	
 	public drama_commentVO getComtDetail(int comt_num) {
-		// DB연동구문을 작성해보세요.
-		// try구문 초입에 ds부분까지만 하셔도 되는데 만약 다 작성 가능하다면 다 작성해보세요.
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

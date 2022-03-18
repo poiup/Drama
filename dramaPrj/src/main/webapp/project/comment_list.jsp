@@ -24,11 +24,11 @@
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>
 				<td>
-					<form action="http://localhost:8181/dramaPrj/DeleteComt" method="post">
+					<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post">
 						<input type="hidden" name="comtnum" value="${comt.comtnum }">
 						<input type="submit" value="삭제">
 					</form>
-					<form action="http://localhost:8181/dramaPrj/UpdateComtForm" method="post" >
+					<form action="http://localhost:8181/dramaPrj/UpdateComtForm.do" method="post" >
 						<input type="hidden" name="comtnum" value="${comt.comtnum }">
 						<input type="submit" value="수정">
 					</form>
