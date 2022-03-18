@@ -41,7 +41,7 @@ public class searchServlet extends HttpServlet {
 		
 		request.setAttribute("search_result", dvo);
 
-		RequestDispatcher dp = request.getRequestDispatcher("/Project/search_result.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/project/search_result.jsp");
 		dp.forward(request, response);
 		
 	}

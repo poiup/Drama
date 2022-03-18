@@ -50,7 +50,7 @@
 		          </div>
 		        </div>
 				</c:forEach>
-				<!-- 
+				
 		        <div class="col-6">
 		          <div class="card">
 		            <div class="card-header">
@@ -64,7 +64,7 @@
 			            </div>
 		          </div>
 		        </div>
-				 -->
+				 
       </div>
     </div>
           
