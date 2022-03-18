@@ -1,7 +1,6 @@
 package kr.co.drama.servlet;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
