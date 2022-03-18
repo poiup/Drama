@@ -180,7 +180,7 @@ public class dramainfoDAO {
 			pstmt.close();
 		}
 	}
-
+	
 	public List<dramainfoVO> SerchValuesByName(String searching){
 
 		List<dramainfoVO> userList = new ArrayList<>();
@@ -226,5 +226,5 @@ public class dramainfoDAO {
 		}	
 		return userList;
 	}
-
 }
+
