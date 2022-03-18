@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
 <body>
 
       <div align="center">
-      	<form action="/dramaPrj/select" method="post">
+      	<form action="/dramaPrj/dramaSearch.do" method="post">
 	      	
 		      <input type="text" 
 		      id="twotabsearchtextbox"  
