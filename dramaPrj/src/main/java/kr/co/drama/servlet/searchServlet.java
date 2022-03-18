@@ -1,7 +1,7 @@
 package kr.co.drama.servlet;
 
 import java.io.IOException;
-
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.drama.drama_commentDAO;
-import kr.co.drama.drama_commentVO;
+import kr.co.drama.dramainfoDAO;
+import kr.co.drama.dramainfoVO;
 
 /**
- * Servlet implementation class UpdateComtFormServlet
+ * Servlet implementation class searchServlet
  */
-@WebServlet("/UpdateComtForm")
-public class UpdateComtFormServlet extends HttpServlet {
+@WebServlet("/select")
+public class searchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateComtFormServlet() {
+    public searchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,27 +33,25 @@ public class UpdateComtFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		dramainfoDAO dao = dramainfoDAO.getInstance();
+		request.setCharacterEncoding("utf-8");
+		String keywords = request.getParameter("keywords");
+		List<dramainfoVO> dvo = dao.SerchValuesByName(keywords);
+		
+		request.setAttribute("search_result", dvo);
+
+		RequestDispatcher dp = request.getRequestDispatcher("/Project/search_result.jsp");
+		dp.forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String comtnum = request.getParameter("comtnum");
-		int cNum = Integer.parseInt(comtnum);
-		
-		drama_commentDAO dao = drama_commentDAO.getInstance();
-		
-		drama_commentVO comtList = dao.getComtDetail(cNum);
-	
-		request.setAttribute("comtList", comtList);
-		
-		RequestDispatcher dp = request.getRequestDispatcher("comment/comment_updateForm.jsp");
-		dp.forward(request, response);
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
