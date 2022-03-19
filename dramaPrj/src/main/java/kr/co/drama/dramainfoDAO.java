@@ -180,4 +180,51 @@ public class dramainfoDAO {
 			pstmt.close();
 		}
 	}
+
+	public List<dramainfoVO> SerchValuesByName(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dname like ? or dgenre like ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			pstmt.setString(2, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+
 }

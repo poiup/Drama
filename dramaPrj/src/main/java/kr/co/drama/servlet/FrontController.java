@@ -11,11 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.drama.servlet.service.ComtDeleteService;
+import kr.co.drama.servlet.service.ComtInsertService;
+import kr.co.drama.servlet.service.ComtListService;
+import kr.co.drama.servlet.service.ComtUpdatService;
+import kr.co.drama.servlet.service.ComtUpdateFormService;
 import kr.co.drama.servlet.service.IDramaService;
 import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
+
 import kr.co.drama.servlet.service.dramaUpdateService;
 
 /**
@@ -62,6 +68,7 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String ui = null;
 		IDramaService sv = null;
+		
 		if(uri.equals("/dramaPrj/dramatest.do")) {
 			ui = "/project/dramatest.jsp";
 		} else if(uri.equals("/dramaPrj/dramaDetail.do")) {
@@ -90,6 +97,36 @@ public class FrontController extends HttpServlet {
 			sv = new dramaBuyService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
+
+		} 
+		
+		
+		else if(uri.equals("/dramaPrj/CommentList.do")) {
+			sv = new ComtListService();
+			sv.execute(request, response);
+			ui = "/project/comment_list.jsp";
+
+		} 
+		else if(uri.equals("/dramaPrj/commentList.do")) {
+			sv = new ComtListService();
+			sv.execute(request, response);
+			ui = "/comment/comment_list.jsp";
+		} else if(uri.equals("/dramaPrj/InsertComt.do")) {
+			sv = new ComtInsertService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/DeleteComt.do")) {
+			sv = new ComtDeleteService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/UpdateComtForm.do")) {
+			sv = new ComtUpdateFormService();
+			sv.execute(request, response);
+			ui = "/project/comment_updateForm.jsp";
+		} else if(uri.equals("/dramaPrj/UpdateComt.do")) {
+			sv = new ComtUpdatService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
 		}
 		
 		
