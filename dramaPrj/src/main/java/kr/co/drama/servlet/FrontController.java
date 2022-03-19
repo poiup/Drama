@@ -1,6 +1,7 @@
 package kr.co.drama.servlet;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,10 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.drama.servlet.service.ComtDeleteService;
+import kr.co.drama.servlet.service.ComtInsertService;
+import kr.co.drama.servlet.service.ComtListService;
+import kr.co.drama.servlet.service.ComtUpdatService;
+import kr.co.drama.servlet.service.ComtUpdateFormService;
 import kr.co.drama.servlet.service.IDramaService;
+import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
+import kr.co.drama.servlet.service.dramaSearchDrama;
 import kr.co.drama.servlet.service.dramaUpdateService;
 import kr.co.drama.servlet.service.login;
 import kr.co.drama.servlet.service.loginUpdate;
@@ -67,6 +75,7 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String ui = null;
 		IDramaService sv = null;
+		
 		if(uri.equals("/dramaPrj/dramatest.do")) {
 			ui = "/project/dramatest.jsp";
 		} else if(uri.equals("/dramaPrj/dramaDetail.do")) {
@@ -91,7 +100,14 @@ public class FrontController extends HttpServlet {
 			ui = "/project/dramatest.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsertForm.do")) {
 			ui = "/project/dramaInsert.jsp";
-		} else if(uri.equals("/dramaPrj/sign.do")) {
+		} else if(uri.equals("/dramaPrj/dramaBuy.do")) {
+			sv = new dramaBuyService();
+			sv.execute(request, response);
+			ui = "/dramaDetail.do";
+		} 
+		
+		
+		else if(uri.equals("/dramaPrj/sign.do")) {
 			ui = "/project/sign.jsp";
 		} else if(uri.equals("/dramaPrj/main.do")){
 			ui = "/project/index.jsp";
@@ -127,11 +143,44 @@ public class FrontController extends HttpServlet {
 			ui = "/main.do";
 		}
 		
+		
+		else if(uri.equals("/dramaPrj/CommentList.do")) {
+			sv = new ComtListService();
+			sv.execute(request, response);
+			ui = "/project/comment_list.jsp";
+
+		} 
+		else if(uri.equals("/dramaPrj/commentList.do")) {
+			sv = new ComtListService();
+			sv.execute(request, response);
+			ui = "/comment/comment_list.jsp";
+		} else if(uri.equals("/dramaPrj/InsertComt.do")) {
+			sv = new ComtInsertService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/DeleteComt.do")) {
+			sv = new ComtDeleteService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/UpdateComtForm.do")) {
+			sv = new ComtUpdateFormService();
+			sv.execute(request, response);
+			ui = "/project/comment_updateForm.jsp";
+		} else if(uri.equals("/dramaPrj/UpdateComt.do")) {
+			sv = new ComtUpdatService();
+			sv.execute(request, response);
+			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/dramaSearch.do")) {
+			sv = new dramaSearchDrama();
+			sv.execute(request, response);
+			ui = "/project/search_result.jsp";
+		}
+		
 		else {
 			ui = "/index.jsp";
 		}
 		
-		System.out.println("sv : " + sv);
+		
 		System.out.println(request.getRequestURI());
 		System.out.println(ui);
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

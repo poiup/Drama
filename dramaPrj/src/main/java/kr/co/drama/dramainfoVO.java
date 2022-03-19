@@ -34,11 +34,11 @@ public class dramainfoVO {
 		this.dname = dname;
 	}
 
-	public int getDprice() {
+	public int getdprice() {
 		return dprice;
 	}
 
-	public void setDpric(int dprice) {
+	public void setdprice(int dprice) {
 		this.dprice = dprice;
 	}
 
@@ -100,7 +100,7 @@ public class dramainfoVO {
 
 	@Override
 	public String toString() {
-		return "dramainfoVO [dname=" + dname + ", dpric=" + dprice + ", dgenre=" + dgenre + ", ddate=" + ddate
+		return "dramainfoVO [dname=" + dname + ", dprice=" + dprice + ", dgenre=" + dgenre + ", ddate=" + ddate
 				+ ", dage=" + dage + ", dnum=" + dnum + ", dthumb=" + dthumb + ", dvideo=" + dvideo + ", dtext=" + dtext
 				+ "]";
 	}

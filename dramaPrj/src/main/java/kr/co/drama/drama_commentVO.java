@@ -20,6 +20,54 @@ public class drama_commentVO {
 		this.comtnum = comtnum;
 	}
 
+	public int getUnum() {
+		return unum;
+	}
+
+	public void setUnum(int unum) {
+		this.unum = unum;
+	}
+
+	public int getDnum() {
+		return dnum;
+	}
+
+	public void setDnum(int dnum) {
+		this.dnum = dnum;
+	}
+
+	public String getComtcont() {
+		return comtcont;
+	}
+
+	public void setComtcont(String comtcont) {
+		this.comtcont = comtcont;
+	}
+
+	public Date getComtdate() {
+		return comtdate;
+	}
+
+	public void setComtdate(Date comtdate) {
+		this.comtdate = comtdate;
+	}
+
+	public int getComtrate() {
+		return comtrate;
+	}
+
+	public void setComtrate(int comtrate) {
+		this.comtrate = comtrate;
+	}
+
+	public int getComtnum() {
+		return comtnum;
+	}
+
+	public void setComtnum(int comtnum) {
+		this.comtnum = comtnum;
+	}
+
 	@Override
 	public String toString() {
 		return "drama_commentVO [unum=" + unum + ", dnum=" + dnum + ", comtcont=" + comtcont + ", comtdate=" + comtdate

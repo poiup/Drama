@@ -1,11 +1,11 @@
 package kr.co.drama.servlet.service;
 
-import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +18,7 @@ public class dramaDetailService implements IDramaService{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException{
 		int dNum = Integer.parseInt(request.getParameter("dnum"));
+		
 		dramainfoDAO dInfoDAO = dramainfoDAO.getInstance();
 		dramainfoVO dramaDetail = null;
 		actorDAO actDAO = actorDAO.getInstance();
@@ -30,6 +31,8 @@ public class dramaDetailService implements IDramaService{
 		}
 		request.setAttribute("actorList", actorList);
 		request.setAttribute("dramaDetail", dramaDetail);
+		
+		
 	}	
 	
 }
