@@ -21,8 +21,15 @@ import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
-
+import kr.co.drama.servlet.service.dramaSearchDrama;
 import kr.co.drama.servlet.service.dramaUpdateService;
+import kr.co.drama.servlet.service.login;
+import kr.co.drama.servlet.service.loginUpdate;
+import kr.co.drama.servlet.service.loginUpdateForm;
+import kr.co.drama.servlet.service.loginfail;
+import kr.co.drama.servlet.service.logout;
+import kr.co.drama.servlet.service.memberOut;
+import kr.co.drama.servlet.service.signUp;
 
 /**
  * Servlet implementation class FrontController
@@ -97,16 +104,57 @@ public class FrontController extends HttpServlet {
 			sv = new dramaBuyService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
-
-		} 
+		} else if(uri.equals("/dramaPrj/dramaBuyForm.do")) {
+			ui = "/project/dramaBuy.jsp";
+		}
 		
+		
+		else if(uri.equals("/dramaPrj/sign.do")) {
+			ui = "/project/sign.jsp";
+		} else if(uri.equals("/dramaPrj/main.do")){
+			ui = "/project/index.jsp";
+		} else if(uri.equals("/dramaPrj/login.do")) {
+			sv = new login();
+			sv.execute(request, response);
+			ui = "/loginfail.do";
+		} else if(uri.equals("/dramaPrj/loginfail.do")) {
+			sv = new loginfail();
+			sv.execute(request, response);
+			ui = "/main.do";
+		} else if (uri.equals("/dramaPrj/signUpForm.do")) {
+			ui = "/project/signup.jsp";
+		} else if (uri.equals("/dramaPrj/signUp.do")) {
+			sv = new signUp();
+			sv.execute(request, response);
+			ui = "/main.do";
+		} else if(uri.equals("/dramaPrj/logout.do")) {
+			sv = new logout();
+			sv.execute(request, response);
+			ui = "/main.do";
+		}else if (uri.equals("/dramaPrj/loginUpdateForm.do")) {
+			sv = new loginUpdateForm();
+			sv.execute(request, response);
+			ui = "/project/login_update.jsp";
+		}else if (uri.equals("/dramaPrj/loginUpdate.do")) {
+			sv = new loginUpdate();
+			sv.execute(request, response);
+			ui = "/main.do";
+		}else if (uri.equals("/dramaPrj/memberOut.do")) {
+			sv = new memberOut();
+			sv.execute(request, response);
+			ui = "/main.do";
+		}
+		
+		else if (uri.equals("/dramaPrj/commentForm.do")) {
+			ui = "/project/comment_form.jsp";
+		}
 		
 		else if(uri.equals("/dramaPrj/CommentList.do")) {
 			sv = new ComtListService();
 			sv.execute(request, response);
 			ui = "/project/comment_list.jsp";
-
 		} 
+		
 		else if(uri.equals("/dramaPrj/commentList.do")) {
 			sv = new ComtListService();
 			sv.execute(request, response);
@@ -127,6 +175,16 @@ public class FrontController extends HttpServlet {
 			sv = new ComtUpdatService();
 			sv.execute(request, response);
 			ui = "/CommentList.do";
+		} else if(uri.equals("/dramaPrj/dramaSearch.do")) {
+			sv = new dramaSearchDrama();
+			sv.execute(request, response);
+			ui = "/project/search_result.jsp";
+		} else if(uri.equals("/dramaPrj/dramaSearchPage.do")) {
+			ui = "/project/dramaSearch.jsp";
+		}
+		
+		else {
+			ui = "/index.jsp";
 		}
 		
 		

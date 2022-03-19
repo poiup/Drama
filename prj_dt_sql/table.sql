@@ -11,8 +11,8 @@ create table userinfo(
     unick varchar(15),
     upoint int default 0
 );
-
-
+INSERT INTO userinfo (uid,upw,uname,uage,ucredit,uadress,unick) VALUE (1,2,3,4,5,6,7);
+INSERT INTO userinfo (uid,upw,uname,uage,ucredit,uadress,unick) VALUE ('q','q','q','4','q','q','q');
 create table dramainfo(
 	dname varchar(20) not null,
     dprice int not null,
@@ -24,8 +24,6 @@ create table dramainfo(
     dvideo varchar(30) not null,
     dtext varchar(300)
 );
-
-
 
 create table actor(
 	actname varchar(10) not null,
@@ -77,6 +75,7 @@ select * from drama_comment;
 select * from dramainfo;
 select * from userinfo;
 
+SELECT * FROM userinfo WHERE uid = 'admin';
 SELECT * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo);
 SELECT * FROM actor WHERE dnum = 3;
 -- 테이블 싹 날릴때 순서대로 실행하면 됩니다.
