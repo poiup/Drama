@@ -25,12 +25,17 @@ public class login implements IDramaService {
 		if(user != null){
 			String uId = user.getUid();
 			String uPw = user.getUpw();
+			String uCredit = user.getUcredit();
+			int uNum = user.getUnum();
+			System.out.println("DB내 유저 유저번호 : " + uNum);
 			System.out.println("DB내 유저 아이디 : " + uId);
 			System.out.println(fId.equals(user.getUid()) && fPw.equals(user.getUpw()));
 			
 			// 아이디 비밀번호 체크
 			if(fId.equals(user.getUid()) && fPw.equals(user.getUpw())){
 				request.getSession().setAttribute("session_id", uId);
+				request.getSession().setAttribute("session_uNum", uNum);
+				request.getSession().setAttribute("session_uCredit", uCredit);
 				//request.getSession().setAttribute("session_pw", fPw);
 			} 			
 		} 

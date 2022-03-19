@@ -104,7 +104,9 @@ public class FrontController extends HttpServlet {
 			sv = new dramaBuyService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
-		} 
+		} else if(uri.equals("/dramaPrj/dramaBuyForm.do")) {
+			ui = "/project/dramaBuy.jsp";
+		}
 		
 		
 		else if(uri.equals("/dramaPrj/sign.do")) {
@@ -148,8 +150,8 @@ public class FrontController extends HttpServlet {
 			sv = new ComtListService();
 			sv.execute(request, response);
 			ui = "/project/comment_list.jsp";
-
 		} 
+		
 		else if(uri.equals("/dramaPrj/commentList.do")) {
 			sv = new ComtListService();
 			sv.execute(request, response);
@@ -174,6 +176,8 @@ public class FrontController extends HttpServlet {
 			sv = new dramaSearchDrama();
 			sv.execute(request, response);
 			ui = "/project/search_result.jsp";
+		} else if(uri.equals("/dramaPrj/dramaSearchPage.do")) {
+			ui = "/project/dramaSearch.jsp";
 		}
 		
 		else {

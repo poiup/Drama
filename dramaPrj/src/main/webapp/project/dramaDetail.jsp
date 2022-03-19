@@ -49,5 +49,9 @@
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="submit" value="수정">
 	</form>
+	<form action="/dramaPrj/dramaBuyForm.do" method="post">
+		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="submit" value="구매">
+	</form>
 </body>
 </html>

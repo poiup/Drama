@@ -25,8 +25,8 @@ public class dramaBuyService implements IDramaService{
 		buyinfoDAO biDAO = buyinfoDAO.getInstance();
 		
 		try {
+			biDAO.buyInsert(dnum, unum);
 			if(ucredit.equals(biDAO.getucredit(unum))) {
-				biDAO.buyInsert(dnum, unum);
 			}else {
 				System.out.println("잘못된 결제 정보 입니다.");
 				RequestDispatcher dp = request.getRequestDispatcher("/project/dramaBuyFail.jsp");

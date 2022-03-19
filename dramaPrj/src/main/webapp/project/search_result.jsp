@@ -44,7 +44,10 @@
 			            <img class="thumbnail" src="Project${search.dthumb }" alt="#" />
 				        <div class="card-body">
 				              <p class="card-text">${search.dtext }</p>
-			              
+				              <form action="/dramaPrj/dramaDetail.do">
+				              	<input type="hidden" name ="dnum" value="${search.dnum }">
+				              	<input type = "submit" value="자세히">
+				              </form>
 			            </div>
 			      	</div>
 		          </div>
