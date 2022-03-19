@@ -145,6 +145,9 @@ public class FrontController extends HttpServlet {
 			ui = "/main.do";
 		}
 		
+		else if (uri.equals("/dramaPrj/commentForm.do")) {
+			ui = "/project/comment_form.jsp";
+		}
 		
 		else if(uri.equals("/dramaPrj/CommentList.do")) {
 			sv = new ComtListService();
