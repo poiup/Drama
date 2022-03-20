@@ -26,6 +26,8 @@ public class login implements IDramaService {
 			String uId = user.getUid();
 			String uPw = user.getUpw();
 			String uCredit = user.getUcredit();
+			String uName = user.getUname();
+			String uNick = user.getUnick();
 			int uNum = user.getUnum();
 			System.out.println("DB내 유저 유저번호 : " + uNum);
 			System.out.println("DB내 유저 아이디 : " + uId);
@@ -36,6 +38,8 @@ public class login implements IDramaService {
 				request.getSession().setAttribute("session_id", uId);
 				request.getSession().setAttribute("session_uNum", uNum);
 				request.getSession().setAttribute("session_uCredit", uCredit);
+				request.getSession().setAttribute("session_uName", uName);
+				request.getSession().setAttribute("session_uNick", uNick);
 				//request.getSession().setAttribute("session_pw", fPw);
 			} 			
 		} 

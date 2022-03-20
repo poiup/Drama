@@ -9,9 +9,13 @@
 <body>
 	<h1>결제 페이지</h1>
 	<form action = "/dramaPrj/dramaBuy.do" method = "post">
-		유저번호 : <input type = "text" name = "unum" placeholder = "유저번호" value="${sessionScope.session_uNum }">
-		드라마번호 : <input type = "text" name = "dnum" placeholder = "드라마 번호" value="${param.dnum }">
-		유저 카드 번호 : <input type = "text" name = "ucredit" placeholder = ****-****">
+	<!--  이상하게 name을 불러오면 nick이 표시되고 nick을 불러오면 name이 표시됩니다........
+	그리구 유저번호 대신 유저 나이를 불러옵니다... 왜그럴까요..? -->
+		구매자 이름 : <input type = "text" name = "uname" placeholder = "${sessionScope.session_uName }" readonly><br/>
+		구매할 드라마 제목 : <input type = "text" name = "dname" placeholder = "${param.dname }" readonly><br/>
+		유저 번호 : <input type = "text" name = "unum"  value="${sessionScope.session_uNum }"><br/>
+		드라마 번호 : <input type = "text" name = "dnum"  value="${param.dnum }"><br/>
+		유저 카드 번호 입력 : <input type = "text" name = "ucredit" placeholder = ****-****"><br/>
 		<input type = "submit" value = "결제하기">
 	</form>
 </body>

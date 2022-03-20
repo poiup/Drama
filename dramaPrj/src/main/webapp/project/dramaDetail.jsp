@@ -51,6 +51,7 @@
 	</form>
 	<form action="/dramaPrj/dramaBuyForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
 		<input type="submit" value="구매">
 	</form>
 	<form action="/dramaPrj/commentForm.do" method="post">
