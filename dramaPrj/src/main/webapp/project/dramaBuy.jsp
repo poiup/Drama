@@ -13,10 +13,10 @@
 	그리구 유저번호 대신 유저 나이를 불러옵니다... 왜그럴까요..? -->
 		구매자 이름 : <input type = "text" name = "uname" placeholder = "${sessionScope.session_uName }" readonly><br/>
 		구매할 드라마 제목 : <input type = "text" name = "dname" placeholder = "${param.dname }" readonly><br/>
-		유저 번호 : <input type = "text" name = "unum"  value="${sessionScope.session_uNum }"><br/>
-		드라마 번호 : <input type = "text" name = "dnum"  value="${param.dnum }"><br/>
 		유저 카드 번호 입력 : <input type = "text" name = "ucredit" placeholder = ****-****"><br/>
-		<input type = "submit" value = "결제하기">
+		<input type = "submit" value = "결제하기"><br/>
+		<input type = "hidden" name = "unum"  value="${sessionScope.session_uNum }"><br/>
+		<input type = "hidden" name = "dnum"  value="${param.dnum }"><br/>
 	</form>
 </body>
 </html>
