@@ -45,6 +45,15 @@
 			</div>
 		</div>
 	</div>
+	<form action="/dramaPrj/dramaFavorite.do" method = "post">
+		${sessionScope.session_uAge }
+		${dramaDetail.dnum }<br/>
+		${dramaDetail.dname }<br/>
+		<input type="hidden" value="${sessionScope.session_uAge }" name = "unum">
+		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
+		<input type="submit" value="선호작 등록">
+	</form>
 	<form action="/dramaPrj/dramaUpdateForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="submit" value="수정">
