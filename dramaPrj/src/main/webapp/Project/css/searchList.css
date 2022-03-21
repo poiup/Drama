@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+
+
+.genre{
+	font-size: 15px;
+	width:150px; 
+}
+
+	.horror{
+		background: linear-gradient( 45deg, yellow, red );
+		color: white;
+	}
+	
+	.melo{
+		background: pink;
+	}
+	
+	.fantagy{
+		background: yellow;
+	}
+	
+	.medical{
+		background: white;
+		color: black;
+	}
+
+img.thumbnail{
+	width : 340px;
+	height : 260px;
+}
+
+.card-header > p{
+	float:left
+}
+
+#searchBox{
+	margin : 50px;
+}
