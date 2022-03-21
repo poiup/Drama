@@ -10,27 +10,30 @@
   <title>K-Drama Site</title>
 </head>
 <body>
-   <form action="/Project/join_check" method="POST" class="joinForm">                                                                                              
-    <h2>회원가입</h2>
-    <div class="textForm">
-      <input name="fid" type="text" class="id" placeholder="아이디">
-    </div>
-    <div class="textForm">
-      <input name="fpw" type="password" class="pw" placeholder="비밀번호">
-    </div>
-    <div class="textForm">
-      <input name="fnick" type="text" class="nickname" placeholder="닉네임">
-    </div>
-     <div class="textForm">
-      <input name="fage" type="text" class="age" placeholder="나이">
-    </div>
-    <div class="textForm">
-      <input name="fcredit" type="text" class="card" placeholder="신용카드">
-    </div>
-    <div class="textForm">
-      <input name="faddress" type="text" class="addr" placeholder="주소">
-    </div>
-    <input type="submit" class="btn" value="JOIN"/>
+   <form action="/dramaPrj/signUp.do" method="POST" class="joinForm">                                                                                              
+	    <h2>회원가입</h2>
+	    <div class="textForm">
+	      <input name="fid" type="text" class="id" placeholder="아이디">
+	    </div>
+	    <div class="textForm">
+	      <input name="fpw" type="password" class="pw" placeholder="비밀번호">
+	    </div>
+	    <div class="textForm">
+	      <input name="fname" type="text" class="name" placeholder="이름">
+	    </div>
+	    <div class="textForm">
+	      <input name="fnick" type="text" class="nickname" placeholder="닉네임">
+	    </div>
+	     <div class="textForm">
+	      <input name="fage" type="number" class="age" placeholder="나이">
+	    </div>
+	    <div class="textForm">
+	      <input name="fcredit" type="text" class="card" placeholder="신용카드">
+	    </div>
+	    <div class="textForm">
+	      <input name="faddress" type="text" class="addr" placeholder="주소">
+	    </div>
+	    <input type="submit" class="btn" value="JOIN"/>
   </form>
 </body>
 </body> 
