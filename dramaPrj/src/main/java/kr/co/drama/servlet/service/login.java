@@ -32,7 +32,7 @@ public class login implements IDramaService {
 			int uNum = user.getUnum();
 			System.out.println("DB내 유저 유저번호 : " + uNum);
 			System.out.println("DB내 유저 아이디 : " + uId);
-			System.out.println(fId.equals(user.getUid()) && fPw.equals(user.getUpw()));
+			System.out.println(uCredit);
 			
 			// 아이디 비밀번호 체크
 			if(fId.equals(user.getUid()) && fPw.equals(user.getUpw())){
