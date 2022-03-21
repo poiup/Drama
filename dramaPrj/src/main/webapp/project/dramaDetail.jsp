@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +54,48 @@
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="submit" value="구매">
 	</form>
-	<form action="/dramaPrj/commentForm.do" method="post">
-		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
-		<input type="submit" value="댓글보기">
+	
+	<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
+		<input type="text" name="unum" placeholder="유저넘버" >
+		<input type="hidden" name="dnum" placeholder="드라마넘버" value="${dramaDetail.dnum }">
+		<input type="text" name="comtcont" placeholder="댓글">
+		<input type="text" name="comtrate" placeholder="평점">
+		<input type="submit" value="작성">
 	</form>
+	
+	
+	
+	
+	<table class="table table-hover">
+		<tr>
+			<th>유저번호</th>
+			<th>댓글내용</th>
+			<th>평점</th>
+			<th>작성일시</th>
+			
+		</tr>
+	
+		<c:forEach var="comt" items="${comtList }">
+			<tr>
+				<td>${comt.unum}</td>
+				<td>${comt.comtcont}</td>
+				<td>${comt.comtrate}</td>
+				<td>${comt.comtdate}</td>
+				<td>
+					<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post">
+						<input type="hidden" name="comtnum" value="${comt.comtnum }">
+						<input type="hidden" name="dnum" value="${comt.dnum }">
+						<input type="submit" value="삭제">
+					</form>
+					<form action="http://localhost:8181/dramaPrj/UpdateComtForm.do" method="post" >
+						<input type="hidden" name="comtnum" value="${comt.comtnum }">
+						<input type="submit" value="수정">
+					</form>
+				</td>
+			</tr> 
+		</c:forEach>
+	</table>
+
+
 </body>
 </html>
