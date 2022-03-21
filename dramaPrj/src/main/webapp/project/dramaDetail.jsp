@@ -1,25 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	* {margin: 0; padding: 0; }
-	div{border : solid 1px #000;}
-	.container {border:none}
-	.Ddetail_img{height:300px}
-	.Ddetail_img img {width : 100%; height :100%}
-	.Dtitle_wrap {height : 20%}
-	.Dtext_wrap{height: 80%}
-	.Ddate_wrap{text-align:right}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Dokdo&family=Nanum+Myeongjo:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="project/css/dramaDetail.css" rel="stylesheet"/>
 </head>
 <body>
-
+	
 	<div class="container ">
+	
+	<div class="header">
+      <h1><a href="/dramaPrj/main.do">K-Drama</a></h1>
+      <div class="nav">
+        <ul class="user_nav">
+        	<form class="SerchForm" action="/dramaPrj/dramaSearch.do" method="post" style="display : inline">
+	        	<td><input type="text" placeholder="검색어 입력" name="keywords" maxlength="100" style='text-align:center'></td>
+				<td><button type="submit" class="btn btn-success">검색</button></td>
+			</form>
+			<!-- 로그인 -->
+			<c:if test="${sessionScope.session_id ne null }">
+          		<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
+          		<li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
+          		<li><a href="/dramaPrj/loginUpdateForm.do" onMouseOver='this.innerHTML="정보수정"' onMouseOut='this.innerHTML="Edit"'>Edit</a></li>
+        	  	<li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
+			</c:if>
+			<!-- 비로그인 -->
+			<c:if test="${sessionScope.session_id eq null }">
+     	    	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
+				<li><a href="/dramaPrj/signUpForm.do" onMouseOver='this.innerHTML="가입"' onMouseOut='this.innerHTML="Join"'>Join</a></li>
+	          	<li><a href="/dramaPrj/sign.do" onMouseOver='this.innerHTML="로그인"' onMouseOut='this.innerHTML="Login"'>Login</a></li>
+        	</c:if>
+        </ul>
+    	</div>
+    </div>
 		<div class="row g-0">
 			<div class="col-4 Ddetail_img">
 

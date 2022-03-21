@@ -1,0 +1,61 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ddd;
+}
+dl, ol, ul {
+	margin-bottom: 0;
+}
+.container .header{
+  width: 80%;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Song Myung', serif;
+  margin-bottom: 80px;
+}
+
+.container .header h1 a {
+  text-decoration: none;
+  color: white;
+}
+
+.container .nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.container .nav ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.container .nav ul li a:hover {
+  color: white;
+}
+
+.user_nav {
+	display: inline_block;
+	float: right;
+}
+
+.user_nav li{
+	float: left
+}
+.SerchForm {
+	display : inline!important;
+	float: right;
+}
+
+div{border : solid 1px #000;}
+.container {border:none}
+.Ddetail_img{height:300px}
+.Ddetail_img img {width : 100%; height :100%}
+.Dtitle_wrap {height : 20%}
+.Dtext_wrap{height: 80%}
+.Ddate_wrap{text-align:right}

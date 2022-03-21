@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,21 +14,24 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1><a href="#">K-Drama</a></h1>
+      <h1><a href="/dramaPrj/main.do">K-Drama</a></h1>
       <div class="nav">
         <ul class="user_nav">
-        	<td><input type="text" class="form-control"
-			placeholder="검색어 입력" name="searchText" maxlength="100" style='text-align:center'></td>
-			<td><button type="submit" class="btn btn-success">검색</button></td>
+        	<form class="SerchForm" action="/dramaPrj/dramaSearch.do" method="post" style="display : inline">
+	        	<td><input type="text" class="form-control"
+				placeholder="검색어 입력" name="keywords" maxlength="100" style='text-align:center'></td>
+				<td><button type="submit" class="btn btn-success">검색</button></td>
+			</form>
 			<!-- 로그인 -->
 			<c:if test="${sessionScope.session_id ne null }">
-     	    	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
+          		<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
           		<li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
           		<li><a href="/dramaPrj/loginUpdateForm.do" onMouseOver='this.innerHTML="정보수정"' onMouseOut='this.innerHTML="Edit"'>Edit</a></li>
         	  	<li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
 			</c:if>
 			<!-- 비로그인 -->
 			<c:if test="${sessionScope.session_id eq null }">
+     	    	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
 				<li><a href="/dramaPrj/signUpForm.do" onMouseOver='this.innerHTML="가입"' onMouseOut='this.innerHTML="Join"'>Join</a></li>
 	          	<li><a href="/dramaPrj/sign.do" onMouseOver='this.innerHTML="로그인"' onMouseOut='this.innerHTML="Login"'>Login</a></li>
         	</c:if>
@@ -43,7 +45,7 @@
         It's a place where you can see it.<br>
         It is also a place where you can conversation<br>
         with many people through Korean dramas.</p>
-    <button><h3>Let's Go!</h3></button>
+    <button><a href="/dramaPrj/dramaSearchPage.do"><h3 style="color:white">Let's Go!</h3></a></button>
   </div>
   </div>
 </body> 
