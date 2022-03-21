@@ -56,7 +56,7 @@
 	</form>
 	
 	<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
-		<input type="text" name="unum" placeholder="유저넘버" >
+		<input type="hidden" name="unum" placeholder="유저넘버" value="${user.unum}">
 		<input type="hidden" name="dnum" placeholder="드라마넘버" value="${dramaDetail.dnum }">
 		<input type="text" name="comtcont" placeholder="댓글">
 		<input type="text" name="comtrate" placeholder="평점">
@@ -65,10 +65,9 @@
 	
 	
 	
-	
 	<table class="table table-hover">
 		<tr>
-			<th>유저번호</th>
+			<th>아이디</th>
 			<th>댓글내용</th>
 			<th>평점</th>
 			<th>작성일시</th>
@@ -77,7 +76,7 @@
 	
 		<c:forEach var="comt" items="${comtList }">
 			<tr>
-				<td>${comt.unum}</td>
+				<td>${sId}</td>
 				<td>${comt.comtcont}</td>
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>

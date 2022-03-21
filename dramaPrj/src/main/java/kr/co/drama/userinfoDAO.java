@@ -47,15 +47,15 @@ public class userinfoDAO {
 				while(rs.next()) {
 					String uId = rs.getString("uid");
 					String uPw = rs.getString("upw");
-					String uNick = rs.getString("unick");
+					String uName = rs.getString("uname");
 					int uAge = rs.getInt("uage");
-					String uCredit = rs.getString("ucredit");
-					String uAddress = rs.getString("uaddress");
-					int uPoint = rs.getInt("upoint");
-					String uName = rs.getString("uaddress");
 					int uNum = rs.getInt("unum");
+					String uCredit = rs.getString("ucredit");
+					String uAddress = rs.getString("uadress");
+					String uNick = rs.getString("unick");
+					int uPoint = rs.getInt("upoint");
 					
-					userinfoVO userData = new userinfoVO(uId, uPw, uNick, uNum, uAge, uCredit, uAddress, uName, uPoint);
+					userinfoVO userData = new userinfoVO(uId, uPw, uName, uAge, uNum, uCredit, uAddress, uNick, uPoint);
 					userList.add(userData);
 				}
 			} catch(Exception e) {
@@ -88,13 +88,13 @@ public class userinfoDAO {
 					String uId = rs.getString("uid");
 					String uPw = rs.getString("upw");
 					String uName = rs.getString("uname");
-					String uNick = rs.getString("unick");
 					int uAge = rs.getInt("uage");
+					int uNum = rs.getInt("unum");
 					String uCredit = rs.getString("ucredit");
 					String uAddress = rs.getString("uadress");
-					int uNum = rs.getInt("unum");
+					String uNick = rs.getString("unick");
 					int uPoint = rs.getInt("upoint");
-					user = new userinfoVO(uId, uPw, uNick, uNum, uAge, uCredit, uAddress, uName, uPoint);
+					user = new userinfoVO(uId, uPw, uName, uAge, uNum, uCredit, uAddress, uNick, uPoint);
 				}
 			} catch(Exception e) {
 				e.printStackTrace();
