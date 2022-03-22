@@ -49,7 +49,7 @@
 		${sessionScope.session_uAge }
 		${dramaDetail.dnum }<br/>
 		${dramaDetail.dname }<br/>
-		<input type="hidden" value="${sessionScope.session_uAge }" name = "unum">
+		<input type="hidden" value="${sessionScope.session_uNum }" name = "unum">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
 		<input type="submit" value="선호작 등록">
