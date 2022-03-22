@@ -22,7 +22,6 @@ import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
 import kr.co.drama.servlet.service.dramaInsertService;
-import kr.co.drama.servlet.service.dramaSearchService;
 import kr.co.drama.servlet.service.dramaUpdateService;
 
 /**
@@ -99,10 +98,6 @@ public class FrontController extends HttpServlet {
 			sv = new dramaBuyService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
-		} else if(uri.equals("/dramaPrj/dramaSearch.do")) {
-			sv = new dramaSearchService();
-			sv.execute(request, response);
-			ui = "/project/dramaSearchResult.jsp";
 		} else if(uri.equals("/dramaPrj/commentList.do")) {
 			csv = new ComtListService();
 			csv.execute(request, response);
@@ -123,7 +118,8 @@ public class FrontController extends HttpServlet {
 			csv = new ComtUpdatService();
 			csv.execute(request, response);
 			ui = "/commentList.do";
-		} 
+		}
+		
 		
 		System.out.println(request.getRequestURI());
 		System.out.println(ui);
