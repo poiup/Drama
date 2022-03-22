@@ -6,9 +6,14 @@
   background-color: #ddd;
 }
 dl, ol, ul {
+	text-decoration: none;
 	margin-bottom: 0;
 }
-.container .header{
+
+.header_wrap{
+	width : 100%;
+}
+ .header{
   width: 80%;
   height: 80px;
   margin: 0 auto;
@@ -19,23 +24,26 @@ dl, ol, ul {
   margin-bottom: 80px;
 }
 
-.container .header h1 a {
+.navbar {
+	width : 100%;
+}
+.logo a {
   text-decoration: none;
   color: white;
 }
 
-.container .nav ul li {
+.user_nav ul li {
   display: inline-block;
   margin: 0 10px;
 }
 
-.container .nav ul li a{
+.user_nav ul li a{
   text-decoration: none;
   color: white;
   font-size: 20px;
 }
 
-.container .nav ul li a:hover {
+.user_nav ul li a:hover {
   color: white;
 }
 
@@ -52,10 +60,9 @@ dl, ol, ul {
 	float: right;
 }
 
-div{border : solid 1px #000;}
 .container {border:none}
-.Ddetail_img{height:300px}
-.Ddetail_img img {width : 100%; height :100%}
+.Ddetail_img{height:300px; overflow: hidden;}
+.Ddetail_img img {height :100%; transform: translateX(-20%);}
 .Dtitle_wrap {height : 20%}
 .Dtext_wrap{height: 80%}
 .Ddate_wrap{text-align:right}

@@ -30,9 +30,7 @@ public class dramaDetailService implements IDramaService{
 			e.printStackTrace();
 		}
 		request.setAttribute("actorList", actorList);
-		request.setAttribute("dramaDetail", dramaDetail);
-		
-		
+		request.setAttribute("dramaDetail", dramaDetail);		
 	}	
 	
 }

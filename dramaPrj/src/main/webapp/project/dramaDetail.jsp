@@ -11,33 +11,35 @@
 <link href="project/css/dramaDetail.css" rel="stylesheet"/>
 </head>
 <body>
-	
+	<div class="hearder_wrap">
+		<div class="header">
+			<nav class="navbar navbar-dark bg-dark">
+				<h1 class="logo"><a href="/dramaPrj/main.do">K-Drama</a></h1>
+		  		<ul class="user_nav">
+			        <form class="SerchForm" action="/dramaPrj/dramaSearch.do" method="post" style="display : inline">
+				        <td><input type="text" placeholder="검색어 입력" name="keywords" maxlength="100" style='text-align:center'></td>
+						<td><button type="submit" class="btn btn-outline-dark">검색</button></td>
+					</form>
+						<!-- 로그인 -->
+					<c:if test="${sessionScope.session_id ne null }">
+			          	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
+			          	<li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
+			          	<li><a href="/dramaPrj/loginUpdateForm.do" onMouseOver='this.innerHTML="정보수정"' onMouseOut='this.innerHTML="Edit"'>Edit</a></li>
+			        	  <li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
+					</c:if>
+						<!-- 비로그인 -->
+					<c:if test="${sessionScope.session_id eq null }">
+			     	    <li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
+						<li><a href="/dramaPrj/signUpForm.do" onMouseOver='this.innerHTML="가입"' onMouseOut='this.innerHTML="Join"'>Join</a></li>
+				        <li><a href="/dramaPrj/sign.do" onMouseOver='this.innerHTML="로그인"' onMouseOut='this.innerHTML="Login"'>Login</a></li>
+			        </c:if>
+	        	</ul>
+			</nav>
+	    </div>
+    </div>
+    
 	<div class="container ">
 	
-	<div class="header">
-      <h1><a href="/dramaPrj/main.do">K-Drama</a></h1>
-      <div class="nav">
-        <ul class="user_nav">
-        	<form class="SerchForm" action="/dramaPrj/dramaSearch.do" method="post" style="display : inline">
-	        	<td><input type="text" placeholder="검색어 입력" name="keywords" maxlength="100" style='text-align:center'></td>
-				<td><button type="submit" class="btn btn-success">검색</button></td>
-			</form>
-			<!-- 로그인 -->
-			<c:if test="${sessionScope.session_id ne null }">
-          		<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
-          		<li><a href="#" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
-          		<li><a href="/dramaPrj/loginUpdateForm.do" onMouseOver='this.innerHTML="정보수정"' onMouseOut='this.innerHTML="Edit"'>Edit</a></li>
-        	  	<li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
-			</c:if>
-			<!-- 비로그인 -->
-			<c:if test="${sessionScope.session_id eq null }">
-     	    	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
-				<li><a href="/dramaPrj/signUpForm.do" onMouseOver='this.innerHTML="가입"' onMouseOut='this.innerHTML="Join"'>Join</a></li>
-	          	<li><a href="/dramaPrj/sign.do" onMouseOver='this.innerHTML="로그인"' onMouseOut='this.innerHTML="Login"'>Login</a></li>
-        	</c:if>
-        </ul>
-    	</div>
-    </div>
 		<div class="row g-0">
 			<div class="col-4 Ddetail_img">
 
@@ -55,7 +57,13 @@
 				</div>	
 			</div> 
 			<div class = "row g-0">
-				<div class="col-6"><span>가격 : ${dramaDetail.dprice }원</span></div>
+				<div class="col-3"><span>가격 : ${dramaDetail.dprice }원</span></div>
+				<div class="col-3"><span>
+					 <c:forEach var="name" items="${actorList }">
+						${name.actname },					 
+					 </c:forEach>
+					</span>
+				</div>
 				<!-- 아래 div에 평점을 넣어주세요. 댓글 평점의 평균을 내서 넣어주시면 됩니다. -->
 				<div class="col-3"></div>
 				<div class="col-1"><span>등급: ${dramaDetail.dage }세</span></div>
