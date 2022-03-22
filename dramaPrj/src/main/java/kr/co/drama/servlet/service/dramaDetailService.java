@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.drama.actorDAO;
 import kr.co.drama.actorVO;
 import kr.co.drama.drama_commentDAO;
+import kr.co.drama.drama_commentDTO;
 import kr.co.drama.drama_commentVO;
 import kr.co.drama.dramainfoDAO;
 import kr.co.drama.dramainfoVO;
@@ -23,7 +24,15 @@ public class dramaDetailService implements IDramaService{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException{
 		int dNum = Integer.parseInt(request.getParameter("dnum"));
-		// sk
+		String strpNum = request.getParameter("pageNum");
+		int pNum = 0;
+		try {
+			pNum = Integer.parseInt(strpNum);
+		} catch(Exception e) {
+			pNum = 1;
+		}
+		
+		
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("session_id");
 	
@@ -34,6 +43,11 @@ public class dramaDetailService implements IDramaService{
 		List<actorVO> actorList = new ArrayList<>();
 		List<drama_commentVO> comtList = new ArrayList<>();
 		
+		// 페이지 버튼 생성을 위한 글 개수 sk
+		int comtCount = dao.getPageNum(dNum);
+		drama_commentDTO dto = new drama_commentDTO(comtCount, pNum);
+		System.out.println("페이징처리정보 : " + dto);
+		
 		// sk
 		userinfoDAO uifDAO = userinfoDAO.getInstance();
 		userinfoVO user = null;
@@ -41,17 +55,21 @@ public class dramaDetailService implements IDramaService{
 		try {
 			dramaDetail = dInfoDAO.dramaDetail(dNum);
 			actorList = actDAO.actorList(dNum);
-			comtList = dao.getAllcomtList(dNum);
+			comtList = dao.getAllcomtList(dNum,pNum);
 			user = uifDAO.getUserData(sId); // sk
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		request.setAttribute("actorList", actorList);
 		request.setAttribute("dramaDetail", dramaDetail);
 		request.setAttribute("comtList", comtList);
 		
 		request.setAttribute("sId", sId); // sk
 		request.setAttribute("user", user);
+		request.setAttribute("dto", dto);
 	}	
 	
 }

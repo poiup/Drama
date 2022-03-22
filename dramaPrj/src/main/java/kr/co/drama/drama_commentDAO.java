@@ -33,22 +33,24 @@ private drama_commentDAO() {
 		return dao;
 	}
 	
-	public List<drama_commentVO> getAllcomtList(int dNum){
+	public List<drama_commentVO> getAllcomtList(int dNum,int pageNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		final int COMT_COUNT = 5;
 		List<drama_commentVO> comtList = new ArrayList<>();
 		try {
 		
 			con = ds.getConnection();
+			int limitNum = ((pageNum-1) * COMT_COUNT);
 		
-		// select * from drama_comment where dnum = ? order by comtnum DESC;
-		 String sql = "SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC";
+		// SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC;
+		 String sql = "SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC limit ? , ?";
 		 
 		 pstmt = con.prepareStatement(sql);	
 		 pstmt.setInt(1, dNum);
-		
+		 pstmt.setInt(2, limitNum);
+		 pstmt.setInt(3, COMT_COUNT);
 		 rs = pstmt.executeQuery();
 		
 	
@@ -202,5 +204,37 @@ private drama_commentDAO() {
 			}
 			return comt; 
 	}
+	
+	// 글 전체 개수 조회
+	public int getPageNum(int dNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int pageNum = 0;
+	
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM drama_comment WHERE dnum = ?;"; 
+			pstmt = con.prepareStatement(sql); 
+			pstmt.setInt(1, dNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				pageNum = rs.getInt(1);	
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();	
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return pageNum; 
+		}		
 	
 }
