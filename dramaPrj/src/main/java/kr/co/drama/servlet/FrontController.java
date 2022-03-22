@@ -181,6 +181,8 @@ public class FrontController extends HttpServlet {
 			ui = "/project/search_result.jsp";
 		} else if(uri.equals("/dramaPrj/dramaSearchPage.do")) {
 			ui = "/project/dramaSearch.jsp";
+		} else if(uri.equals("/dramaPrj/out.do")) {
+			ui = "/project/out.jsp";
 		}
 		
 		else {

@@ -36,7 +36,7 @@
         </ul>
     </div>
   </div>
-  
+
   <div class="hero">
     <h2>Get ready for watching<br>K-Drama?</h2>
     <p>This site is famous for Korean dramas.<br>
