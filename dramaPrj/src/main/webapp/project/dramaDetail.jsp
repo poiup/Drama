@@ -67,7 +67,8 @@
 	
 	세션: ${sId }<br>
 	유저아이디 : ${user.uid }<br>
-	comt.unum : ${comt.unum }<br>
+	user : ${user}<br>
+	user2 : ${user2 }<br>
 	${dto }
 	<table class="table table-hover">
 		<tr>
@@ -79,11 +80,12 @@
 		</tr>
 		<c:forEach var="comt" items="${comtList }">
 			<tr>
-				<td>${comt.unum}</td>
+				<td>${user2.uid}</td>
 				<td>${comt.comtcont}</td>
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>
 				<td>${comt.comtnum }</td>
+				<td>${comt.unum }
 				<td>
 				<c:if test="${sId ne null }"> <!-- 로그인x면 삭제수정 불가 -->
 					<c:if test="${comt.unum eq user.unum}"> <!-- 작성자만 수정 삭제 가능 -->

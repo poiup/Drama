@@ -66,6 +66,7 @@ private drama_commentDAO() {
 			 drama_commentVO comtData = new drama_commentVO(unum, dnum, comtcont, comtdate, comtrate, comtnum);
 			 comtList.add(comtData);
 		 }
+		 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {

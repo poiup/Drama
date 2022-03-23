@@ -201,4 +201,42 @@ public class userinfoDAO {
 			}
 		}
 		
+		
+		public userinfoVO getUserData2(int uNumber) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			userinfoVO user2 = null;
+			try {
+				con = ds.getConnection();
+				String sql = "SELECT * FROM userinfo WHERE unum = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, uNumber);
+					
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					String uId = rs.getString("uid");
+					String uPw = rs.getString("upw");
+					String uName = rs.getString("uname");
+					int uAge = rs.getInt("uage");
+					int uNum = rs.getInt("unum");
+					String uCredit = rs.getString("ucredit");
+					String uAddress = rs.getString("uadress");
+					String uNick = rs.getString("unick");
+					int uPoint = rs.getInt("upoint");
+					user2 = new userinfoVO(uId, uPw, uName, uAge, uNum, uCredit, uAddress, uNick, uPoint);
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close(); 
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return user2;
+		}
 }

@@ -23,11 +23,22 @@ import kr.co.drama.userinfoVO;
 public class dramaDetailService implements IDramaService{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException{
+		
 		int dNum = Integer.parseInt(request.getParameter("dnum"));
+		
+		int uNum = 0;
+		try {
+			uNum = Integer.parseInt(request.getParameter("unum"));//
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		String strpNum = request.getParameter("pageNum");
 		int pNum = 0;
 		try {
 			pNum = Integer.parseInt(strpNum);
+			
 		} catch(Exception e) {
 			pNum = 1;
 		}
@@ -43,21 +54,22 @@ public class dramaDetailService implements IDramaService{
 		List<actorVO> actorList = new ArrayList<>();
 		List<drama_commentVO> comtList = new ArrayList<>();
 		
+		
 		// 페이지 버튼 생성을 위한 글 개수 sk
 		int comtCount = dao.getPageNum(dNum);
 		drama_commentDTO dto = new drama_commentDTO(comtCount, pNum);
-		System.out.println("페이징처리정보 : " + dto);
 		
 		// sk
 		userinfoDAO uifDAO = userinfoDAO.getInstance();
 		userinfoVO user = null;
+		userinfoVO user2 = null;//
 		
 		try {
 			dramaDetail = dInfoDAO.dramaDetail(dNum);
 			actorList = actDAO.actorList(dNum);
 			comtList = dao.getAllcomtList(dNum,pNum);
 			user = uifDAO.getUserData(sId); // sk
-			
+			user2 = uifDAO.getUserData2(uNum);//
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,6 +82,8 @@ public class dramaDetailService implements IDramaService{
 		request.setAttribute("sId", sId); // sk
 		request.setAttribute("user", user);
 		request.setAttribute("dto", dto);
+		
+		request.setAttribute("user2", user2);//
 	}	
 	
 }
