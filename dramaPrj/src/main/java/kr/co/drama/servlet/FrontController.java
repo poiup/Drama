@@ -178,9 +178,11 @@ public class FrontController extends HttpServlet {
 		} else if(uri.equals("/dramaPrj/dramaSearch.do")) {
 			sv = new dramaSearchDrama();
 			sv.execute(request, response);
-			ui = "/project/search_result.jsp";
+			ui = "/project/dramaSearchResult.jsp";
 		} else if(uri.equals("/dramaPrj/dramaSearchPage.do")) {
 			ui = "/project/dramaSearch.jsp";
+		} else if(uri.equals("/dramaPrj/out.do")) {
+			ui = "/project/out.jsp";
 		}
 		
 		else {

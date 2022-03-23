@@ -7,16 +7,17 @@
 
 <link rel="stylesheet" href="project/css/searchList.css">
 <link rel="stylesheet" href="css/searchList.css">
-
-  <script type="text/javascript">
-	$(document).ready(function(){
-		$("#twotabsearchtextbox").on("change keyup paste", 
-				function(){
-					console.log(document.getElementById("twotabsearchtextbox").value);
-				}
-		);
-	});
+<!-- 
+	  <script type="text/javascript">
+		$(document).ready(function(){
+			$("#twotabsearchtextbox").on("change keyup paste", 
+					function(){
+						console.log(document.getElementById("twotabsearchtextbox").value);
+					}
+			);
+		});
 </script>
+ -->
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
