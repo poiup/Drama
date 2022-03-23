@@ -101,6 +101,8 @@ public class userinfoVO {
 	public String toString() {
 		return "userinfoVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uage=" + uage + ", unum=" + unum
 				+ ", ucredit=" + ucredit + ", uadress=" + uadress + ", unick=" + unick + ", upoint=" + upoint + "]";
-	}	
+	}
+
+		
 	
 }

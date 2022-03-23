@@ -71,12 +71,22 @@
 			</div>
 		</div>
 	</div>
+	<form action="/dramaPrj/dramaFavorite.do" method = "post">
+		${sessionScope.session_uAge }
+		${dramaDetail.dnum }<br/>
+		${dramaDetail.dname }<br/>
+		<input type="hidden" value="${sessionScope.session_uNum }" name = "unum">
+		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
+		<input type="submit" value="선호작 등록">
+	</form>
 	<form action="/dramaPrj/dramaUpdateForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="submit" value="수정">
 	</form>
 	<form action="/dramaPrj/dramaBuyForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
 		<input type="submit" value="구매">
 	</form>
 	<form action="/dramaPrj/commentForm.do" method="post">
