@@ -64,23 +64,17 @@
 			<input type="submit" value="작성">
 		</form>
 	</c:if>
-	
-	세션: ${sId }<br>
-	유저아이디 : ${user.uid }<br>
-	user : ${user}<br>
-	user2 : ${user2 }<br>
-	${dto }
 	<table class="table table-hover">
 		<tr>
-			<th>아이디</th>
+			<th>닉네임</th>
 			<th>댓글내용</th>
 			<th>평점</th>
 			<th>작성일시</th>
 			
 		</tr>
-		<c:forEach var="comt" items="${comtList }">
-			<tr>
-				<td>${user2.uid}</td>
+		<c:forEach var="comt" items="${comtDataList }">
+			<tr> 
+			 	<td>${comt.unick }</td>
 				<td>${comt.comtcont}</td>
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>

@@ -81,6 +81,54 @@ private drama_commentDAO() {
 		return comtList;
 	}
 
+	public List<dramaComtGetDataDTO> getAllcomtDataList(int dNum,int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		final int COMT_COUNT = 5;
+		List<dramaComtGetDataDTO> comtDataList = new ArrayList<>();
+		try {
+		
+			con = ds.getConnection();
+			int limitNum = ((pageNum-1) * COMT_COUNT);
+		
+		// SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC;
+		 String sql = "select * from userinfo left join drama_comment on userinfo.unum = drama_comment.unum WHERE dnum = ? ORDER BY comtnum DESC limit ? , ?";
+		 System.out.println(sql);
+		 pstmt = con.prepareStatement(sql);	
+		 pstmt.setInt(1, dNum);
+		 pstmt.setInt(2, limitNum);
+		 pstmt.setInt(3, COMT_COUNT);
+		 System.out.println(pstmt);
+		 rs = pstmt.executeQuery();
+		
+	
+		 while(rs.next()) {
+			 int comtUnum = rs.getInt("unum");
+			 String comtUnick = rs.getString("unick");
+			 int comtNum = rs.getInt("comtnum");
+			 int dnum = rs.getInt("dnum");
+			 String comtcont = rs.getString("comtcont");
+			 Date comtdate = rs.getDate("comtdate");
+			 int comtrate = rs.getInt("comtrate");
+			
+			 dramaComtGetDataDTO comtData =  new dramaComtGetDataDTO(comtUnum,comtUnick,comtNum,dnum,comtcont,comtdate,comtrate);
+			 comtDataList.add(comtData);
+		 }
+		 
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException es) {
+				es.printStackTrace();
+			}
+		}
+		return comtDataList;
+	}
 	
 	public void insertComt(int unum, int dnum, String comtcont, int comtrate) {
 		Connection con = null;
