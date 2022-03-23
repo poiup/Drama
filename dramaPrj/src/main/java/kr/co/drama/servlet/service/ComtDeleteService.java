@@ -15,12 +15,13 @@ public class ComtDeleteService implements IDramaService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		
 		String comtnum = request.getParameter("comtnum");
-		
 		int cNum = Integer.parseInt(comtnum);
+		
+		int dNum = Integer.parseInt(request.getParameter("dnum"));
 		
 		drama_commentDAO dao = drama_commentDAO.getInstance();
 		
-		dao.deletComt(cNum);
+		dao.deletComt(cNum, dNum);
 	}
 
 	

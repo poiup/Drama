@@ -14,9 +14,11 @@ public class ComtListService implements IDramaService {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		
+		int dNum = Integer.parseInt(request.getParameter("dnum"));
+		
 		drama_commentDAO dao = drama_commentDAO.getInstance();
 		
-		List<drama_commentVO> comtList = dao.getAllcomtList();
+		List<drama_commentVO> comtList = dao.getAllcomtList(dNum);
 		
 		request.setAttribute("comtList", comtList);
 	}

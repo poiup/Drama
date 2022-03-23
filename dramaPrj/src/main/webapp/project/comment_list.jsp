@@ -26,6 +26,7 @@
 				<td>
 					<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post">
 						<input type="hidden" name="comtnum" value="${comt.comtnum }">
+						<input type="hidden" name="dnum" value="${comt.dnum }">
 						<input type="submit" value="삭제">
 					</form>
 					<form action="http://localhost:8181/dramaPrj/UpdateComtForm.do" method="post" >

@@ -33,7 +33,7 @@ private drama_commentDAO() {
 		return dao;
 	}
 	
-	public List<drama_commentVO> getAllcomtList(){
+	public List<drama_commentVO> getAllcomtList(int dNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -44,9 +44,10 @@ private drama_commentDAO() {
 			con = ds.getConnection();
 		
 		// select * from drama_comment where dnum = ? order by comtnum DESC;
-		 String sql = "SELECT * FROM drama_comment ORDER BY comtnum DESC";
+		 String sql = "SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC";
 		 
 		 pstmt = con.prepareStatement(sql);	
+		 pstmt.setInt(1, dNum);
 		
 		 rs = pstmt.executeQuery();
 		
@@ -106,7 +107,7 @@ private drama_commentDAO() {
 		}
 	}
 	
-	public void deletComt(int comtnum) {
+	public void deletComt(int comtnum, int dNum) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -114,10 +115,11 @@ private drama_commentDAO() {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "delete from drama_comment where comtnum = ?;";
+			String sql = "delete from drama_comment where comtnum = ? and dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, comtnum);
+			pstmt.setInt(2, dNum);
 			
 			pstmt.executeUpdate();
 			
