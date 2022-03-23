@@ -8,24 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${favoriteList }
-	<h1>선호작 리스트 입니다.</h1>
+	<h1>"${sessionScope.session_uNick }"님의 선호작 리스트</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>유저번호</th>
-				<th>드라마번호</th>
-				<th>선호 번호</th>
-				<th>선호작 등록일</th>
+				<th>번호</th>
+				<th>드라마 제목</th>
+				<th>등록일</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="favoriteList" items="${favoriteList}">
 				<tr>
-					<td>${favoriteList.unum }</td>
-					<td><a href="#">${favoriteList.dnum }</a></td>
-					<td>${favoriteList.favnum }</td>
-					<td>${favoriteList.favdate }</td>
+					<td>${favoriteList[0]}</td>
+					<td><a href="#">${favoriteList[1]}</a></td>
+					<td>${favoriteList[2] }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

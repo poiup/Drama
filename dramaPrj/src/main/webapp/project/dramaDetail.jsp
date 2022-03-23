@@ -46,9 +46,6 @@
 		</div>
 	</div>
 	<form action="/dramaPrj/dramaFavorite.do" method = "post">
-		${sessionScope.session_uAge }
-		${dramaDetail.dnum }<br/>
-		${dramaDetail.dname }<br/>
 		<input type="hidden" value="${sessionScope.session_uNum }" name = "unum">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">

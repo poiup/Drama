@@ -26,7 +26,7 @@ public class FavoriteListService implements IDramaService{
 		System.out.println("유저 넘버 : "+strunum);
 		
 		favoriteDAO fdao = favoriteDAO.getInstance();
-		List<favoriteVO> favoriteList = fdao.getFavoriteList(unum);
+		List<String[]> favoriteList = fdao.getFavoriteList(unum);
 		request.setAttribute("favoriteList",favoriteList);
 	}
 	
