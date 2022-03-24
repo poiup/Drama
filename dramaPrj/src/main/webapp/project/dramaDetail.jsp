@@ -37,17 +37,25 @@
 				</div>	
 			</div> 
 			<div class = "row g-0">
-				<div class="col-6"><span>${dramaDetail.dprice }</span></div>
+				<div class="col-6"><span>가격 : ${dramaDetail.dprice }원</span></div>
 				<!-- 아래 div에 평점을 넣어주세요. 댓글 평점의 평균을 내서 넣어주시면 됩니다. -->
 				<div class="col-3"></div>
-				<div class="col-1"><span>${dramaDetail.dage }</span></div>
-				<div class="col-2 Ddate_wrap"><span>${dramaDetail.ddate }</span></div>
+				<div class="col-1"><span>등급: ${dramaDetail.dage }세</span></div>
+				<div class="col-2 Ddate_wrap"><span>방영일 : ${dramaDetail.ddate }</span></div>
 			</div>
 		</div>
 	</div>
 	<form action="/dramaPrj/dramaUpdateForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="submit" value="수정">
+	</form>
+	<form action="/dramaPrj/dramaBuyForm.do" method="post">
+		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="submit" value="구매">
+	</form>
+	<form action="/dramaPrj/commentForm.do" method="post">
+		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+		<input type="submit" value="댓글보기">
 	</form>
 </body>
 </html>

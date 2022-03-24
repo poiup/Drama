@@ -35,12 +35,12 @@ public class buyinfoDAO {
 			// db연결
 			con = ds.getConnection();
 			//쿼리 작성
-			String sql = "insert into buyinfo values (?,?,null,null)";
+			String sql = "insert into buyinfo values (?,?,null,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, unum);			
 			pstmt.setInt(2, dnum);	
 			//쿼리 실행
-			
+			System.out.println(pstmt);
 			pstmt.executeUpdate();
 			
 		} catch(Exception e) {

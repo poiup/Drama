@@ -1,21 +1,20 @@
 package kr.co.drama.servlet.service;
 
-import java.io.IOException;
 
-import javax.servlet.ServletException;
+import java.sql.SQLException;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.drama.drama_commentDAO;
 
-public class ComtInsertService implements IDramaComtService{
+public class ComtInsertService implements IDramaService{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		
 		drama_commentDAO dao = drama_commentDAO.getInstance();
-		
-		request.setCharacterEncoding("utf-8");
 		
 		int unum = Integer.parseInt(request.getParameter("unum"));
 		int dnum = Integer.parseInt(request.getParameter("dnum"));
@@ -26,4 +25,6 @@ public class ComtInsertService implements IDramaComtService{
 		
 	}
 
+	
+	
 }

@@ -1,19 +1,18 @@
 package kr.co.drama.servlet.service;
 
-import java.io.IOException;
 
-import javax.servlet.ServletException;
+import java.sql.SQLException;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.drama.drama_commentDAO;
 
-public class ComtUpdatService implements IDramaComtService{
+public class ComtUpdatService implements IDramaService{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("utf-8");
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		
 		String comtcon = request.getParameter("comtcont");
 		int cNum = Integer.parseInt(request.getParameter("comtnum"));

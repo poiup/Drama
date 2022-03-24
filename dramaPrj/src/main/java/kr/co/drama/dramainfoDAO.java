@@ -31,14 +31,14 @@ public class dramainfoDAO {
 		return dao;
 	}
 	
-	// 드라마 추가구문
+	// �뱶�씪留� 異붽�援щЦ
 	public void dramaInsert	(String dname, int dprice, String dgenre, String ddate, int dage, String dthumb, String dvideo, String dtext, String[] actname) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try { 
-			// db연결
+			// db�뿰寃�
 			con = ds.getConnection();
-			//쿼리 작성
+			//荑쇰━ �옉�꽦
 			String sql = "insert into dramainfo (dname,dprice,dgenre,ddate,dage,dthumb,dvideo,dtext) value (?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dname);
@@ -49,18 +49,18 @@ public class dramainfoDAO {
 			pstmt.setString(6, dthumb);
 			pstmt.setString(7, dvideo);
 			pstmt.setString(8, dtext);			
-			//쿼리 실행
+			//荑쇰━ �떎�뻾
 			int insert = pstmt.executeUpdate();
-			// 배우 이름이 null이 아니라면 실행
+			// 諛곗슦 �씠由꾩씠 null�씠 �븘�땲�씪硫� �떎�뻾
 			if(actname!=null) {
-				// 제일 높은 dnum( 제일 최근생성된 dnum)을 가져옴 
+				// �젣�씪 �넂�� dnum( �젣�씪 理쒓렐�깮�꽦�맂 dnum)�쓣 媛��졇�샂 
 				sql = "SELCET * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
 				pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();
 				int dnum = rs.getInt("dnum");
-				// 제일 최근생성된 dnum을 외래키로 넣어주고 actname을 넣음
-				// , 를 기준으로 잘라 이름을 배열로 저장해 향상된 for문을 돌려 여러 배우를 나눠서 저장
+				// �젣�씪 理쒓렐�깮�꽦�맂 dnum�쓣 �쇅�옒�궎濡� �꽔�뼱二쇨퀬 actname�쓣 �꽔�쓬
+				// , 瑜� 湲곗��쑝濡� �옒�씪 �씠由꾩쓣 諛곗뿴濡� ���옣�빐 �뼢�긽�맂 for臾몄쓣 �룎�젮 �뿬�윭 諛곗슦瑜� �굹�닠�꽌 ���옣
 				for(String name : actname) {
 					sql = "insert into actor (actname, dnum) value (?,?)";
 					pstmt = con.prepareStatement(sql);
@@ -78,21 +78,21 @@ public class dramainfoDAO {
 		}
 	}
 
-	// 드라마 조회구문
+	// �뱶�씪留� 議고쉶援щЦ
 	public dramainfoVO dramaDetail(int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		dramainfoVO dramaDetail = null;
 		try { 
-			// db연결
+			// db�뿰寃�
 			con = ds.getConnection();
-			//쿼리 작성
+			//荑쇰━ �옉�꽦
 			String sql = "SELECT * FROM dramainfo WHERE dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, dnum);
 			
-			//쿼리 실행
+			//荑쇰━ �떎�뻾
 			rs = pstmt.executeQuery();	
 			if(rs.next()) {
 				String dname = rs.getString("dname");
@@ -117,14 +117,14 @@ public class dramainfoDAO {
 		return dramaDetail;
 	}
 	
-	// 드라마 수정
+	// �뱶�씪留� �닔�젙
 	public void dramaUpdate(String dname, int dprice, String dgenre, String ddate, int dage, String dthumb, String dvideo, String dtext, String[] actname, int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try { 
-			// db연결
+			// db�뿰寃�
 			con = ds.getConnection();
-			//쿼리 작성
+			//荑쇰━ �옉�꽦
 			String sql = "UPDATE dramainfo SET dname = ?, dprice = ?, dgenre = ?, ddate = ?, dage = ?, dthumb = ?, dvideo = ?, dtext = ? WHERE dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dname);
@@ -136,9 +136,9 @@ public class dramainfoDAO {
 			pstmt.setString(7, dvideo);
 			pstmt.setString(8, dtext);	
 			pstmt.setInt(9, dnum);
-			//쿼리 실행
+			//荑쇰━ �떎�뻾
 			int insert = pstmt.executeUpdate();
-			// 배우 이름이 null이 아니라면 실행
+			// 諛곗슦 �씠由꾩씠 null�씠 �븘�땲�씪硫� �떎�뻾
 			List<actorVO> actorList = actorDAO.getInstance().actorList(dnum);
 			if(actorList!=null) {
 				int i =0;
@@ -160,18 +160,18 @@ public class dramainfoDAO {
 		}
 	}
 
-	//드라마 삭제
+	//�뱶�씪留� �궘�젣
 	public void dramaDelete(int dnum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try { 
-			// db연결
+			// db�뿰寃�
 			con = ds.getConnection();
-			//쿼리 작성
+			//荑쇰━ �옉�꽦
 			String sql = "DELETE FROM dramainfo WHERE dnum = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, dnum);
-			//쿼리 실행
+			//荑쇰━ �떎�뻾
 			int insert = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -181,7 +181,7 @@ public class dramainfoDAO {
 		}
 	}
 
-	public List<dramainfoVO> SerchValuesByName(String searching){
+	public List<dramainfoVO> SelectAllDrama(){
 
 		List<dramainfoVO> userList = new ArrayList<>();
 		Connection con = null;
@@ -190,11 +190,53 @@ public class dramainfoDAO {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "SELECT *  FROM dramainfo where dname like ? or dgenre like ?";
+			String sql = "SELECT *  FROM dramainfo";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+
+
+	public List<dramainfoVO> SearchValuesByName(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dname like ?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, "%"+searching+"%");
-			pstmt.setString(2, "%"+searching+"%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -227,4 +269,94 @@ public class dramainfoDAO {
 		return userList;
 	}
 
+	public List<dramainfoVO> SearchValuesByactor(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dnum = (SELECT dnum  FROM actor where actname like ?)";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+	
+	public List<dramainfoVO> SearchValuesByGenre(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dgenre like ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
 }
+

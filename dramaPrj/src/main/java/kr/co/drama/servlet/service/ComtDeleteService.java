@@ -1,17 +1,18 @@
 package kr.co.drama.servlet.service;
 
-import java.io.IOException;
 
-import javax.servlet.ServletException;
+import java.sql.SQLException;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.drama.drama_commentDAO;
 
-public class ComtDeleteService implements IDramaComtService{
+public class ComtDeleteService implements IDramaService{
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		
 		String comtnum = request.getParameter("comtnum");
 		
@@ -22,4 +23,5 @@ public class ComtDeleteService implements IDramaComtService{
 		dao.deletComt(cNum);
 	}
 
+	
 }

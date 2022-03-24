@@ -32,3 +32,13 @@ img.thumbnail{
 .card-header > p{
 	float:left
 }
+
+#searchBox{
+	margin : 50px;
+}
+
+.col-3{
+	
+	margin : 30px;
+	
+}
