@@ -226,5 +226,183 @@ public class dramainfoDAO {
 		}	
 		return userList;
 	}
+	
+	public List<dramainfoVO> SelectAllDrama(){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+	
+	public List<dramainfoVO> SearchValuesByName(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dname like ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+
+	public List<dramainfoVO> SearchValuesByactor(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dnum = (SELECT dnum  FROM actor where actname like ?)";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
+	
+	public List<dramainfoVO> SearchValuesByGenre(String searching){
+
+		List<dramainfoVO> userList = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT *  FROM dramainfo where dgenre like ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+searching+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String dname = rs.getString("dname");
+
+				String dthumb = rs.getString("dthumb");
+				String dgenre = rs.getString("dgenre");
+				int dpric = rs.getInt("dprice");
+				int dage = rs.getInt("dage");
+				Date ddate = rs.getDate("ddate");
+				int dnum = rs.getInt("dnum");
+				String dvideo = rs.getString("dvideo");
+				String dtext = rs.getString("dtext");
+
+				dramainfoVO userData = new dramainfoVO(dname,dpric,dgenre,ddate,dage,dnum,dthumb,dvideo,dtext);
+				userList.add(userData);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+		return userList;
+	}
 }
 

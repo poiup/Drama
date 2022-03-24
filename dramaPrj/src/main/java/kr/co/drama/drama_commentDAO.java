@@ -33,21 +33,24 @@ private drama_commentDAO() {
 		return dao;
 	}
 	
-	public List<drama_commentVO> getAllcomtList(){
+	public List<drama_commentVO> getAllcomtList(int dNum,int pageNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		final int COMT_COUNT = 5;
 		List<drama_commentVO> comtList = new ArrayList<>();
 		try {
 		
 			con = ds.getConnection();
+			int limitNum = ((pageNum-1) * COMT_COUNT);
 		
-		// select * from drama_comment where dnum = ? order by comtnum DESC;
-		 String sql = "SELECT * FROM drama_comment ORDER BY comtnum DESC";
+		// SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC;
+		 String sql = "SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC limit ? , ?";
 		 
 		 pstmt = con.prepareStatement(sql);	
-		
+		 pstmt.setInt(1, dNum);
+		 pstmt.setInt(2, limitNum);
+		 pstmt.setInt(3, COMT_COUNT);
 		 rs = pstmt.executeQuery();
 		
 	
@@ -63,6 +66,7 @@ private drama_commentDAO() {
 			 drama_commentVO comtData = new drama_commentVO(unum, dnum, comtcont, comtdate, comtrate, comtnum);
 			 comtList.add(comtData);
 		 }
+		 
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -77,6 +81,54 @@ private drama_commentDAO() {
 		return comtList;
 	}
 
+	public List<dramaComtGetDataDTO> getAllcomtDataList(int dNum,int pageNum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		final int COMT_COUNT = 5;
+		List<dramaComtGetDataDTO> comtDataList = new ArrayList<>();
+		try {
+		
+			con = ds.getConnection();
+			int limitNum = ((pageNum-1) * COMT_COUNT);
+		
+		// SELECT * FROM drama_comment WHERE dnum = ? ORDER BY comtnum DESC;
+		 String sql = "select * from userinfo left join drama_comment on userinfo.unum = drama_comment.unum WHERE dnum = ? ORDER BY comtnum DESC limit ? , ?";
+		 System.out.println(sql);
+		 pstmt = con.prepareStatement(sql);	
+		 pstmt.setInt(1, dNum);
+		 pstmt.setInt(2, limitNum);
+		 pstmt.setInt(3, COMT_COUNT);
+		 System.out.println(pstmt);
+		 rs = pstmt.executeQuery();
+		
+	
+		 while(rs.next()) {
+			 int comtUnum = rs.getInt("unum");
+			 String comtUnick = rs.getString("unick");
+			 int comtNum = rs.getInt("comtnum");
+			 int dnum = rs.getInt("dnum");
+			 String comtcont = rs.getString("comtcont");
+			 Date comtdate = rs.getDate("comtdate");
+			 int comtrate = rs.getInt("comtrate");
+			
+			 dramaComtGetDataDTO comtData =  new dramaComtGetDataDTO(comtUnum,comtUnick,comtNum,dnum,comtcont,comtdate,comtrate);
+			 comtDataList.add(comtData);
+		 }
+		 
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(SQLException es) {
+				es.printStackTrace();
+			}
+		}
+		return comtDataList;
+	}
 	
 	public void insertComt(int unum, int dnum, String comtcont, int comtrate) {
 		Connection con = null;
@@ -106,7 +158,7 @@ private drama_commentDAO() {
 		}
 	}
 	
-	public void deletComt(int comtnum) {
+	public void deletComt(int comtnum, int dNum) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -114,10 +166,11 @@ private drama_commentDAO() {
 		try {
 			con = ds.getConnection();
 			
-			String sql = "delete from drama_comment where comtnum = ?;";
+			String sql = "delete from drama_comment where comtnum = ? and dnum = ?";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, comtnum);
+			pstmt.setInt(2, dNum);
 			
 			pstmt.executeUpdate();
 			
@@ -200,5 +253,37 @@ private drama_commentDAO() {
 			}
 			return comt; 
 	}
+	
+	// 글 전체 개수 조회
+	public int getPageNum(int dNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int pageNum = 0;
+	
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM drama_comment WHERE dnum = ?;"; 
+			pstmt = con.prepareStatement(sql); 
+			pstmt.setInt(1, dNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				pageNum = rs.getInt(1);	
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();	
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return pageNum; 
+		}		
 	
 }
