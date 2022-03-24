@@ -92,12 +92,14 @@
 			</form>
 		</c:if>
 	</c:if>
+	
 	<c:if test = "${sessionScope.session_uNum eq 1 }">
 		<form action="/dramaPrj/dramaUpdateForm.do" method="post">
 			<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 			<input type="submit" value="수정">
 		</form>
 	</c:if>
+	
 	<form action="/dramaPrj/dramaBuyForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
@@ -108,8 +110,8 @@
 		<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
 			<input type="hidden" name="unum" placeholder="유저넘버" value="${user.unum}">
 			<input type="hidden" name="dnum" placeholder="드라마넘버" value="${dramaDetail.dnum }">
-			<input type="text" name="comtcont" placeholder="댓글">
-			<input type="text" name="comtrate" placeholder="평점">
+			<textarea cols="50" name ="comtcont">댓글을 적어주세요</textarea>
+			<input type="number" name="comtrate" placeholder="평점">
 			<input type="submit" value="작성">
 		</form>
 	</c:if>
@@ -128,14 +130,15 @@
 				<td>${comt.comtcont}</td>
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>
+				<td>
 				<c:if test="${sId ne null }"> <!-- 로그인x면 삭제수정 불가 -->
 					<c:if test="${comt.unum eq sessionScope.session_uNum}"> <!-- 작성자만 수정 삭제 가능 -->
-						<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post">
+						<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post" class="comtbtn">
 							<input type="hidden" name="comtnum" value="${comt.comtnum }">
 							<input type="hidden" name="dnum" value="${comt.dnum }">
 							<input type="submit" value="삭제">
 						</form>
-						<form action="http://localhost:8181/dramaPrj/UpdateComtForm.do" method="post" >
+						<form action="http://localhost:8181/dramaPrj/UpdateComtForm.do" method="post" class="comtbtn">
 							<input type="hidden" name="comtnum" value="${comt.comtnum }">
 							<input type="submit" value="수정">
 						</form>

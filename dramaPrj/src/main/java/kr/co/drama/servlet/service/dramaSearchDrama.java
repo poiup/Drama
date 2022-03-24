@@ -20,7 +20,22 @@ public class dramaSearchDrama implements IDramaService{
 
 		dramainfoDAO dao = dramainfoDAO.getInstance();
 		String keywords = request.getParameter("keywords");
-		List<dramainfoVO> dvo = dao.SerchValuesByName(keywords);
+		String search_type = request.getParameter("search_type");
+		
+		List<dramainfoVO> dvo = null;
+
+		if(search_type.equals("dname")) {
+			dvo = dao.SearchValuesByName(keywords);
+			
+		}
+		else if(search_type.equals("actor")) {
+			dvo = dao.SearchValuesByGenre(keywords);
+			
+		}
+		else if(search_type.equals("dgenre")) {
+			dvo = dao.SearchValuesByactor(keywords);
+		}
+
 		
 		request.setAttribute("search_result", dvo);
 

@@ -1,4 +1,7 @@
 
+<%@page import="kr.co.drama.dramainfoVO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.drama.dramainfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,6 +11,7 @@
 
 
 <link rel="stylesheet" href="project/css/searchList.css">
+<link rel="stylesheet" href="/css/searchList.css">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <head>
@@ -15,13 +19,9 @@
 
 <script>
 function redirect(num) {
-	console.log(num);
-	var redirect = "/dramaPrj/dramaDetail.do?dnum="+num;
-	location.href=redirect;
+	location.href="/dramaPrj/dramaDetail.do?dnum="+num;
 }
 </script>
-
-
 <title>Insert title here</title>
 </head>
 	
@@ -29,7 +29,12 @@ function redirect(num) {
 
       <div align="center" id="searchBox">
       	<form action="/dramaPrj/dramaSearch.do" method="post">
-	      	
+	      	  <select name="search_type">
+					<option value="dname">제목</option>
+					<option value="actor">배우</option>
+					<option value="dgenre">장르</option>
+				</select>
+		      <span>
 		      <input type="text" 
 		      id="twotabsearchtextbox"  
 		      class="searchSelect" 
@@ -50,40 +55,30 @@ function redirect(num) {
       
  <div class="container" >
       <div class="row" align="center">
-      
-      
-				<c:forEach var="search" items="${search_result}">
-				
-				
-			        <div class="col-3" onclick="redirect('${search.dnum}');">
-			          <div class="card">
+      <c:if test="${empty search_result || search_result.size() == 0}">
+
+			          <div class="card" style="margin-top:50px">
 			            <div class="card-header">
-			              <p>${search.dname }</p> <p class="horror genre">${search.dgenre }</p>
+			              <p>검색결과가 없습니다</p> 
 			            </div>
-			            <div class="wrap_content"  align="center">
-				            <img class="thumbnail" src="Project${search.dthumb }" alt="#" />
-					        <div class="card-body">
-					              <p class="card-text">${search.dtext }</p>
-				              
-				            </div>
-				      	</div>
 			          </div>
-			        </div>
+      </c:if>
+			<c:forEach var="search" items="${search_result}">
+			       <div class="col-3" onclick="redirect('${search.dnum}');">
+			         <div class="card">
+			           <div class="card-header">
+			             <p>${search.dname }</p> <p class="horror genre">${search.dgenre }</p>
+			           </div>
+			           <div class="wrap_content"  align="center">
+				           <img class="thumbnail" src="Project${search.dthumb }" alt="#" />
+				        <div class="card-body">
+				              <p class="card-text">${search.dtext }</p>
+				             
+				           </div>
+			        	</div>
+			         </div>
+			       </div>
 				</c:forEach>
-				
-		        <div class="col-3">
-		          <div class="card">
-		            <div class="card-header">
-		              <p>ASDF</p> <p class="horror genre">호러</p>
-		            </div>
-		            <div class="wrap_content"  align="center">
-			            <img class="thumbnail" src="img/thumbnail/hotel_1.png" alt="#" />
-				            <div class="card-body">
-				              <p class="card-text">asdf</p>
-			              </div>
-			            </div>
-		          </div>
-		        </div>
       </div>
     </div>
           
