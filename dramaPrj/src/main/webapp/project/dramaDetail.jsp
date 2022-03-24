@@ -40,7 +40,6 @@
     </div>
     
 	<div class="container ">
-	
 		<div class="row g-0">
 			<div class="col-4 Ddetail_img">
 
@@ -72,19 +71,33 @@
 			</div>
 		</div>
 	</div>
-	<form action="/dramaPrj/dramaFavorite.do" method = "post">
-		${sessionScope.session_uAge }
-		${dramaDetail.dnum }<br/>
-		${dramaDetail.dname }<br/>
-		<input type="hidden" value="${sessionScope.session_uNum }" name = "unum">
-		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
-		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
-		<input type="submit" value="선호작 등록">
-	</form>
-	<form action="/dramaPrj/dramaUpdateForm.do" method="post">
-		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
-		<input type="submit" value="수정">
-	</form>
+	
+	<!-- 로그인이 안되어있으면 선호작 등록 불가 -->
+	<c:if test="${sessionScope.session_id ne null }">
+	<!-- 선호작 선택 안되있을시 -->
+		<c:if test="${favoriteDetail.dnum ne dramaDetail.dnum}">
+			<form action="/dramaPrj/dramaFavorite.do" method = "post">
+				<input type="hidden" value="${sessionScope.session_uNum }" name = "unum">
+				<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+				<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
+				<input type="submit" value="(선호작등록)">
+			</form>
+		</c:if>
+	<!-- 선호작 선택 됬을시 -->
+		<c:if test = "${favoriteDetail.dnum eq dramaDetail.dnum }">
+			<form action="/dramaPrj/dramaFavDelete.do" method = "post">
+				<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+				<input type="hidden" value="${favoriteDetail.favnum }" name = "favnum">
+				<input type="submit" value="(선호작취소)">
+			</form>
+		</c:if>
+	</c:if>
+	<c:if test = "${sessionScope.session_uNum eq 1 }">
+		<form action="/dramaPrj/dramaUpdateForm.do" method="post">
+			<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+			<input type="submit" value="수정">
+		</form>
+	</c:if>
 	<form action="/dramaPrj/dramaBuyForm.do" method="post">
 		<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
 		<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
@@ -108,17 +121,15 @@
 			<th>작성일시</th>
 			
 		</tr>
+		
 		<c:forEach var="comt" items="${comtDataList }">
 			<tr> 
 			 	<td>${comt.unick }</td>
 				<td>${comt.comtcont}</td>
 				<td>${comt.comtrate}</td>
 				<td>${comt.comtdate}</td>
-				<td>${comt.comtnum }</td>
-				<td>${comt.unum }
-				<td>
 				<c:if test="${sId ne null }"> <!-- 로그인x면 삭제수정 불가 -->
-					<c:if test="${comt.unum eq user.unum}"> <!-- 작성자만 수정 삭제 가능 -->
+					<c:if test="${comt.unum eq sessionScope.session_uNum}"> <!-- 작성자만 수정 삭제 가능 -->
 						<form action="http://localhost:8181/dramaPrj/DeleteComt.do" method="post">
 							<input type="hidden" name="comtnum" value="${comt.comtnum }">
 							<input type="hidden" name="dnum" value="${comt.dnum }">
@@ -137,18 +148,15 @@
 	
 	<!-- 댓글 넘기기 버튼 -->
 	<nav aria-label="...">
-	  <ul class="pagination pagination-sm justify-content-center">
-	 		
+	  <ul class="pagination pagination-sm justify-content-center">	
 	    		<li class="page-item ${dto.startPage eq 1 ? 'disabled' : '' }">
 	    			<a class="page-link" href="http://localhost:8181/dramaPrj/dramaDetail.do?dnum=${dramaDetail.dnum }&pageNum=${dto.startPage - 1}">&laquo;</a>
-	    		</li>
-	    		
+	    		</li>	
 	    	<c:forEach var="pageIndex" begin="${dto.startPage }" end="${dto.endPage }">
 	    		<li class="page-item ${dto.currentPage eq pageIndex ? 'active' : ''} ">
 	    			<a class="page-link" href="http://localhost:8181/dramaPrj/dramaDetail.do?dnum=${dramaDetail.dnum }&pageNum=${pageIndex}">${pageIndex }</a>
 	    		</li>
 	  		</c:forEach>
-	  		
 			    <li class="page-item ${dto.totalPages eq dto.endPage ? 'disabled' : ''}">
 			    	<a class="page-link" href="http://localhost:8181/dramaPrj/dramaDetail.do?dnum=${dramaDetail.dnum }&pageNum=${dto.endPage + 1}">&raquo;</a>
 			    </li>

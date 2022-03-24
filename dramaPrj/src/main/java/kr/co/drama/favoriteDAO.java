@@ -88,4 +88,69 @@ public class favoriteDAO {
 		}	
 		return favoriteList;
 	}
+
+	public favoriteVO getFavDetail(int dNum,int uNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		favoriteVO favorite = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "SELECT * FROM favorite WHERE dnum = ? and unum = ?"; 
+			pstmt = con.prepareStatement(sql); 
+			pstmt.setInt(1, dNum);
+			pstmt.setInt(2, uNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				 int unum = rs.getInt("unum");
+				 int dnum = rs.getInt("dnum");
+				 int favnum = rs.getInt("favnum");
+				 Date favdate = rs.getDate("favdate");
+				
+				favorite = new favoriteVO(unum, dnum, favnum, favdate );
+			}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					con.close();	
+					pstmt.close();
+					rs.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return favorite; 
+		
+	}
+	
+	public void deleteFavorite(int favorNum) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			String sql = "DELETE FROM favorite WHERE favnum = ?";
+			pstmt = con.prepareStatement(sql);
+		
+			pstmt.setInt(1, favorNum);
+			
+			pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+				pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
