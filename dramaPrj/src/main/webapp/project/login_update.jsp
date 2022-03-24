@@ -58,7 +58,7 @@
 	<br/>
 	<input type="hidden" name = "fid" value = "${user.uid }">
 	<input type="submit" value="수정하기">
-	<input type="button" value="탈퇴하기" onClick="location.href='http://localhost:8181/dramaPrj/memberOut.do'">
+	<input type="button" value="탈퇴하기" onClick="location.href='/dramaPrj/out.do'">
 	</form>
 </body>
 </html>

@@ -47,6 +47,7 @@ public class userinfoDAO {
 				while(rs.next()) {
 					String uId = rs.getString("uid");
 					String uPw = rs.getString("upw");
+
 					String uName = rs.getString("uname");
 					int uAge = rs.getInt("uage");
 					int uNum = rs.getInt("unum");
@@ -56,6 +57,7 @@ public class userinfoDAO {
 					int uPoint = rs.getInt("upoint");
 					
 					userinfoVO userData = new userinfoVO(uId, uPw, uName, uAge, uNum, uCredit, uAddress, uNick, uPoint);
+
 					userList.add(userData);
 				}
 			} catch(Exception e) {
