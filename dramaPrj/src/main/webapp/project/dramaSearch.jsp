@@ -27,7 +27,6 @@ function redirect(num) {
 <title>Insert title here</title>
 </head>
 <body>
-
       <div align="center" id="searchBox">
       	<form action="/dramaPrj/dramaSearch.do" method="post">
 	      	  <select name="search_type">

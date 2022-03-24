@@ -112,7 +112,7 @@ public class FrontController extends HttpServlet {
 		} else if(uri.equals("/dramaPrj/dramaFavorite.do")) {
 			sv = new dramaFavoriteService();
 			sv.execute(request, response);
-			ui = "/project/dramaFavoriteResult.jsp";
+			ui = "/dramaDetail.do";
 		} else if(uri.equals("/dramaPrj/FavoriteList.do")) {
 			sv = new FavoriteListService();
 			sv.execute(request, response);

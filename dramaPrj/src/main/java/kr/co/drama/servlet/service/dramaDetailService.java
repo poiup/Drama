@@ -41,14 +41,17 @@ public class dramaDetailService implements IDramaService{
 		int pNum = 0;
 		try {
 			pNum = Integer.parseInt(strpNum);
-			String strunum = String.valueOf(session.getAttribute("session_uNum")); // 선호작 로직
-			uNum = Integer.parseInt(strunum);// 선호작 로직
-			System.out.println("DB내 유저 유저번호 : " + uNum +" : "+ dNum);
-			favoriteDetail = fdao.getFavDetail(dNum, uNum); // 선호작 로직
 		} catch(Exception e) {
 			pNum = 1;
 		}
 		
+		try {
+			String strunum = String.valueOf(session.getAttribute("session_uNum")); // 선호작 로직
+			uNum = Integer.parseInt(strunum);// 선호작 로직
+			favoriteDetail = fdao.getFavDetail(dNum, uNum); // 선호작 로직
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 	
