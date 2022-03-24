@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.drama.servlet.service.ComtDeleteService;
 import kr.co.drama.servlet.service.ComtInsertService;
-import kr.co.drama.servlet.service.ComtListService;
 import kr.co.drama.servlet.service.ComtUpdatService;
 import kr.co.drama.servlet.service.ComtUpdateFormService;
 import kr.co.drama.servlet.service.FavoriteListService;
@@ -154,28 +153,18 @@ public class FrontController extends HttpServlet {
 			ui = "/main.do";
 		}
 		
-		else if (uri.equals("/dramaPrj/commentForm.do")) {
+		
+		else if (uri.equals("/dramaPrj/CommentForm.do")) {
 			ui = "/project/comment_form.jsp";
 		}
-		
-		else if(uri.equals("/dramaPrj/CommentList.do")) {
-			sv = new ComtListService();
-			sv.execute(request, response);
-			ui = "/project/comment_list.jsp";
-		} 
-		
-		else if(uri.equals("/dramaPrj/commentList.do")) {
-			sv = new ComtListService();
-			sv.execute(request, response);
-			ui = "/comment/comment_list.jsp";
-		} else if(uri.equals("/dramaPrj/InsertComt.do")) {
+		else if(uri.equals("/dramaPrj/InsertComt.do")) {
 			sv = new ComtInsertService();
 			sv.execute(request, response);
-			ui = "/CommentList.do";
+			ui = "/dramaDetail.do";
 		} else if(uri.equals("/dramaPrj/DeleteComt.do")) {
 			sv = new ComtDeleteService();
 			sv.execute(request, response);
-			ui = "/CommentList.do";
+			ui = "/dramaDetail.do";
 		} else if(uri.equals("/dramaPrj/UpdateComtForm.do")) {
 			sv = new ComtUpdateFormService();
 			sv.execute(request, response);
@@ -183,8 +172,11 @@ public class FrontController extends HttpServlet {
 		} else if(uri.equals("/dramaPrj/UpdateComt.do")) {
 			sv = new ComtUpdatService();
 			sv.execute(request, response);
-			ui = "/CommentList.do";
-		} else if(uri.equals("/dramaPrj/dramaSearch.do")) {
+			ui = "/dramaDetail.do";			
+		} 
+		
+		
+		else if(uri.equals("/dramaPrj/dramaSearch.do")) {
 			sv = new dramaSearchDrama();
 			sv.execute(request, response);
 			ui = "/project/dramaSearchResult.jsp";
