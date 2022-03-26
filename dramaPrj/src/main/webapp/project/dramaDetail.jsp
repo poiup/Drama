@@ -106,15 +106,19 @@
 		<input type="submit" value="구매">
 	</form>
 	
-	<c:if test="${sId ne null }"> <!-- 로그인x 댓글작성 불가 -->
-		<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
-			<input type="hidden" name="unum" placeholder="유저넘버" value="${sessionScope.session_uNum}">
-			<input type="hidden" name="dnum" placeholder="드라마넘버" value="${dramaDetail.dnum }">
-			<textarea cols="50" name ="comtcont">댓글을 적어주세요</textarea>
-			<input type="number" name="comtrate" placeholder="평점">
-			<input type="submit" value="작성">
-		</form>
-	</c:if>
+	<div>
+		<c:if test="${sId ne null }"> <!-- 로그인x 댓글작성 불가 -->
+			<form action="http://localhost:8181/dramaPrj/InsertComt.do" method="post">
+				<input type="hidden" name="unum" placeholder="유저넘버" value="${sessionScope.session_uNum}">
+				<input type="hidden" name="dnum" placeholder="드라마넘버" value="${dramaDetail.dnum }">
+					<textarea cols="50" name ="comtcont" required>댓글을 적어주세요</textarea>
+				<input type="number" name="comtrate" placeholder="평점" required>
+				<input type="submit" value="작성">
+			</form>
+		</c:if>
+	</div>
+	
+	
 	<table class="table table-hover">
 		<tr>
 			<th>닉네임</th>
