@@ -13,7 +13,7 @@
 		<input type="hidden" name="unum" value="${comtList.unum }">
 		<input type="hidden" name="dnum" value="${comtList.dnum }">
 		댓글:	<input type="text" name="comtcont" placeholder="${comtList.comtcont }">
-		평점:	<input type="text" name="comtrate" value="${comtList.comtrate}">
+		평점:	<input type="text" name="comtrate" placeholder="${comtList.comtrate}">
 			<input type="submit" value="수정">
 		</form>
 </body>

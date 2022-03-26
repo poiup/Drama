@@ -12,6 +12,7 @@
 <head>
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom2.css" rel="stylesheet">
+    <link href="css/update.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -58,7 +59,7 @@
 	<br/>
 	<input type="hidden" name = "fid" value = "${user.uid }">
 	<input type="submit" value="수정하기">
-	<input type="button" value="탈퇴하기" onClick="location.href='http://localhost:8181/dramaPrj/project/out.jsp'">
+	<input type="button" value="탈퇴하기" onClick="location.href='/dramaPrj/out.do'">
 	</form>
 </body>
 </html>

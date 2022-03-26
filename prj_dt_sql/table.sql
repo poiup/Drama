@@ -1,4 +1,3 @@
-create SCHEMA team_prj;
 use team_prj;
 
 create table userinfo(
@@ -12,6 +11,7 @@ create table userinfo(
     unick varchar(15),
     upoint int default 0
 );
+
 INSERT INTO userinfo (uid,upw,uname,uage,ucredit,uadress,unick) VALUE (1,2,3,4,5,6,7);
 INSERT INTO userinfo (uid,upw,uname,uage,ucredit,uadress,unick) VALUE ('q','q','q','4','q','q','q');
 create table dramainfo(

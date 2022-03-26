@@ -1,0 +1,13 @@
+@charset "EUC-KR";
+
+* {
+ text-align: center;
+}
+
+body {
+	background-image: url( "https://i.ibb.co/jbYH6qM/2022-03-25-213252.jpg" );
+	background-repeat: no-repeat;
+	background-size : 1680px 900px;
+	background-position: center;
+	margin : 200px;
+	color : white;

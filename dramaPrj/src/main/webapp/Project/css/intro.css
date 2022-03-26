@@ -86,3 +86,6 @@ transition: all .4s;
 .user_nav li{
 	float: left
 }
+.SerchForm {
+	display : inline!important;
+}
