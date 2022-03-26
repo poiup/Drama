@@ -14,6 +14,6 @@
   <div class="Pay">
     <h1>결제 번호 불일치</h1>
      <hr/>
-   <a href = "http://localhost:8181/dramaPrj/project/dramaBuy.jsp" class = "payin">결제 페이지로 돌아가기</a>
+   <a href = "http://localhost:8181/dramaPrj/dramaBuyForm.do" class = "payin">결제 페이지로 돌아가기</a>
    
   </div>

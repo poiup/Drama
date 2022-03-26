@@ -17,7 +17,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<h1>${user.unick }님의 정보를 수정합니다!</h1><br/>
 	<form action="/dramaPrj/loginUpdate.do" method="post">
 	
