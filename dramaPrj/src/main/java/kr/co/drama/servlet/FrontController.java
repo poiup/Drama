@@ -95,11 +95,11 @@ public class FrontController extends HttpServlet {
 		} else if(uri.equals("/dramaPrj/dramaDelete.do")) {
 			sv = new dramaDeleteService();
 			sv.execute(request, response);
-			ui = "/project/dramatest.jsp"; 
+			ui = "/project/dramaSearch.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsert.do")) {
 			sv = new dramaInsertService();
 			sv.execute(request, response);
-			ui = "/project/dramatest.jsp";
+			ui = "/project/dramaSearch.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsertForm.do")) {
 			ui = "/project/dramaInsert.jsp";
 		} else if(uri.equals("/dramaPrj/dramaBuy.do")) {

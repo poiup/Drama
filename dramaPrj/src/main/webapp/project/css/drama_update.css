@@ -1,0 +1,87 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+.clear::after{
+	display:block; 
+	content:""; 
+	clear: both;
+}
+
+.navbar {
+	width : 100%;
+	height: 60px;
+}
+.logo a {
+  text-decoration: none;
+  color: white;
+}
+
+.user_nav ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.user_nav ul li a:hover {
+  color: white;
+}
+
+.user_nav {
+	display: inline_block;
+	float: right;
+}
+
+.user_nav li{
+	float: left;
+	display: inline-block;
+	margin: 0 10px;
+	text-decoration: none;
+}
+.user_nav li a{
+	color: #fff;
+	text-decoration: none;
+}
+.SerchForm {
+	display : inline!important;
+	float: right;
+}
+dl, ol, ul, il {
+	text-decoration: none!important;
+	margin-bottom: 0;
+}
+html,body {background-color: #2B3036}
+
+.header_wrap{
+	width : 100%;
+	background-color : #212529;
+	position: fixed;
+	top: 0px;
+	z-index: 2; 
+}
+ .header{
+  width: 80%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Song Myung', serif;
+  margin-bottom: 10px;
+}
+
+.pageTitle {font-weight: bold;}
+.ddel_btn {float:right}
+.ud_btn {padding:10px; width: 100px; margin-top: 20px; font-weight: bold; border: none}
+.Ddate_input{width: 240px}
+.Ddetail_img{height:300px; overflow: hidden;}
+.Ddetail_img img {height :100%; transform: translateX(-20%);}
+.container {border:none; margin-bottom: 20px; margin-top:120px; color : #fff;}
+.Dtitle_wrap {height : 20%; padding-left: 20px;}
+.Dtext_wrap{height: 80%;  padding-left: 20px;}
+.Ddate_wrap{text-align: right}
+.border-top {margin-top: 10px; padding-top: 10px;}
+.border-bottom {margin-bottom: 50px; padding-bottom: 10px;}

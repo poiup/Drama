@@ -18,9 +18,6 @@
       <h1><a href="#">K-Drama</a></h1>
       <div class="nav">
         <ul class="user_nav">
-        	<td><input type="text" class="form-control"
-			placeholder="검색어 입력" name="searchText" maxlength="100" style='text-align:center'></td>
-			<td><button type="submit" class="btn btn-success">검색</button></td>
 			<!-- 로그인 -->
 			<c:if test="${sessionScope.session_id ne null }">
      	    	<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
@@ -30,6 +27,7 @@
 			</c:if>
 			<!-- 비로그인 -->
 			<c:if test="${sessionScope.session_id eq null }">
+				<li><a href="/dramaPrj/dramaSearchPage.do" onMouseOver='this.innerHTML="컨텐츠"' onMouseOut='this.innerHTML="Contents"'>Contents</a></li>
 				<li><a href="/dramaPrj/signUpForm.do" onMouseOver='this.innerHTML="가입"' onMouseOut='this.innerHTML="Join"'>Join</a></li>
 	          	<li><a href="/dramaPrj/sign.do" onMouseOver='this.innerHTML="로그인"' onMouseOut='this.innerHTML="Login"'>Login</a></li>
         	</c:if>
