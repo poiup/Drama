@@ -12,7 +12,7 @@
 <head>
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom2.css" rel="stylesheet">
-    <link href="css/update.css" rel="stylesheet"/>
+    <link href="project/css/update.css" rel="stylesheet"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
