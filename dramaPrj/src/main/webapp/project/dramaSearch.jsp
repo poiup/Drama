@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="kr.co.drama.dramainfoVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.drama.dramainfoDAO"%>
 <%@page import="kr.co.drama.dramainfoVO"%>
@@ -11,18 +10,7 @@
 
 
 <link rel="stylesheet" href="project/css/searchList.css">
-<link rel="stylesheet" href="css/searchList.css">
-<!-- 
-	  <script type="text/javascript">
-		$(document).ready(function(){
-			$("#twotabsearchtextbox").on("change keyup paste", 
-					function(){
-						console.log(document.getElementById("twotabsearchtextbox").value);
-					}
-			);
-		});
-</script>
- -->
+<link rel="stylesheet" href="/css/searchList.css">
  
 <script>
 function redirect(num) {
@@ -40,6 +28,8 @@ function redirect(num) {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
+
 <body>
 
       <div align="center" id="searchBox">
@@ -67,20 +57,22 @@ function redirect(num) {
 		      
 	      </form>
       </div>
-      <%=dvo.size() %>
+      
       
  <div class="container" >
       <div class="row" align="center">
-      <%for(dramainfoVO vo : dvo) {%>
-			        
-			        
-			        <div class="col-3" onclick="redirect('<%=vo.getDnum() %>');">
+      
+      	
+				<%for(dramainfoVO vo : dvo) {%>
+				
+				
+			        <div class="col-3 searchList" onclick="redirect('<%=vo.getDnum() %>');">
 			          <div class="card">
 			            <div class="card-header">
 			              <p><%=vo.getDname() %></p> <p class="horror genre"><%=vo.getDgenre() %></p>
 			            </div>
 			            <div class="wrap_content"  align="center">
-				            <img class="thumbnail" src="Project<%=vo.getDthumb() %>" alt="#" />
+				            <img class="thumbnail" src="project/<%=vo.getDthumb() %>" alt="#" />
 					        <div class="card-body">
 					              <p class="card-text"><%=vo.getDtext() %></p>
 				              
@@ -88,8 +80,8 @@ function redirect(num) {
 				      	</div>
 			          </div>
 			        </div>
-      <%} %>
-      
+      		<%} %>
+				
       </div>
     </div>
           
