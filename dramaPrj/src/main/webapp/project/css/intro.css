@@ -89,3 +89,7 @@ transition: all .4s;
 .SerchForm {
 	display : inline!important;
 }
+.letsgo {
+	text-decoration:none;
+	color : #fff;
+}

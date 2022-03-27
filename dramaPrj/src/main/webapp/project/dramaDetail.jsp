@@ -99,13 +99,15 @@
 				</div>
 			</c:if>
 			
-			<div class="buy_btn">
-				<form action="/dramaPrj/dramaBuyForm.do" method="post" >
-					<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
-					<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
-					<input type="submit" value="구매" style="padding:10px;border:none; width: 150px; font-weight: bold; color:#fff; background-color: #FF5500;">
-				</form>
-			</div>
+			<c:if test="${sessionScope.session_id ne null }">
+				<div class="buy_btn">
+					<form action="/dramaPrj/dramaBuyForm.do" method="post" >
+						<input type="hidden" value="${dramaDetail.dnum }" name = "dnum">
+						<input type="hidden" value = "${dramaDetail.dname }" name = "dname">
+						<input type="submit" value="구매" style="padding:10px;border:none; width: 150px; font-weight: bold; color:#fff; background-color: #FF5500;">
+					</form>
+				</div>
+			</c:if>
 		</div>
 	</div>
 	
