@@ -72,7 +72,7 @@ function redirect(num) {
 			              <p><%=vo.getDname() %></p> <p class="horror genre"><%=vo.getDgenre() %></p>
 			            </div>
 			            <div class="wrap_content"  align="center">
-				            <img class="thumbnail" src="project/<%=vo.getDthumb() %>" alt="#" />
+				            <img class="thumbnail" src="<%=vo.getDthumb() %>" alt="#" />
 					        <div class="card-body">
 					              <p class="card-text"><%=vo.getDtext() %></p>
 				              
@@ -83,7 +83,7 @@ function redirect(num) {
       		<%} %>
 				
       </div>
-    </div>
-          
+   	 </div>
+       
 </body>
 </html>

@@ -79,7 +79,7 @@ function redirect(num) {
 			              <p>${search.dname }</p> <p class="horror genre">${search.dgenre }</p>
 			            </div>
 			            <div class="wrap_content"  align="center">
-				            <img class="thumbnail" src="project/${search.dthumb }" alt="#" />
+				            <img class="thumbnail" src="${search.dthumb }" alt="#" />
 					        <div class="card-body">
 					              <p class="card-text">${search.dtext }</p>
 				              
