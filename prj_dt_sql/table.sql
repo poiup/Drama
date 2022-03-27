@@ -41,7 +41,7 @@ create table favorite(
     favnum int auto_increment primary key,
     favdate date not null
 );
-
+ insert into buyinfo values (1,7,null,now());
 create table buyinfo(
 	unum int not null,
 	CONSTRAINT foreign key (unum) references userinfo(unum) ON DELETE CASCADE,

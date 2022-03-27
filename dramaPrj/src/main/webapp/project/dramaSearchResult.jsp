@@ -90,7 +90,10 @@ function redirect(num) {
 				</c:forEach>
 				
       </div>
-    </div>
-          
+      <c:if test = "${sessionScope.session_uNum eq 1 }">
+      	<button type="button" class="btn btn-secondary drama_add"><a href="/dramaPrj/dramaInsertForm.do">드라마 추가</a></button>
+   	 </c:if>
+   	</div>
+
 </body>
 </html>

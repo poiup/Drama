@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.drama.dramainfoDAO"%>
 <%@page import="kr.co.drama.dramainfoVO"%>
@@ -83,7 +84,9 @@ function redirect(num) {
       		<%} %>
 				
       </div>
+      <c:if test = "${sessionScope.session_uNum eq 1 }">
+      	<button type="button" class="btn btn-secondary drama_add"><a href="/dramaPrj/dramaInsertForm.do">드라마 추가</a></button>
+   	 </c:if>
    	 </div>
-       
 </body>
 </html>

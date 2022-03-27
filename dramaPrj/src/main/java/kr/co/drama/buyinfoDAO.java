@@ -41,8 +41,8 @@ public class buyinfoDAO {
 			//쿼리 작성
 			String sql = "insert into buyinfo values (?,?,null,now())";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, unum);			
-			pstmt.setInt(2, dnum);	
+			pstmt.setInt(1, dnum);			
+			pstmt.setInt(2, unum);	
 			//쿼리 실행
 			System.out.println(pstmt);
 			pstmt.executeUpdate();
