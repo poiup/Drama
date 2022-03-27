@@ -12,11 +12,11 @@
 <head>
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/custom2.css" rel="stylesheet">
+    <link href="project/css/update.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
 	<h1>${user.unick }님의 정보를 수정합니다!</h1><br/>
 	<form action="/dramaPrj/loginUpdate.do" method="post">
 	

@@ -18,6 +18,7 @@ import kr.co.drama.servlet.service.ComtUpdateFormService;
 import kr.co.drama.servlet.service.FavoriteListService;
 import kr.co.drama.servlet.service.FavortieDeleteService;
 import kr.co.drama.servlet.service.IDramaService;
+import kr.co.drama.servlet.service.dramaBuyListService;
 import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
@@ -95,11 +96,11 @@ public class FrontController extends HttpServlet {
 		} else if(uri.equals("/dramaPrj/dramaDelete.do")) {
 			sv = new dramaDeleteService();
 			sv.execute(request, response);
-			ui = "/project/dramatest.jsp"; 
+			ui = "/project/dramaSearch.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsert.do")) {
 			sv = new dramaInsertService();
 			sv.execute(request, response);
-			ui = "/project/dramatest.jsp";
+			ui = "/project/dramaSearch.jsp";
 		} else if(uri.equals("/dramaPrj/dramaInsertForm.do")) {
 			ui = "/project/dramaInsert.jsp";
 		} else if(uri.equals("/dramaPrj/dramaBuy.do")) {
@@ -122,6 +123,10 @@ public class FrontController extends HttpServlet {
 			sv = new FavortieDeleteService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
+		}   else if(uri.equals("/dramaPrj/dramaBuyList.do")) {
+			sv = new dramaBuyListService();
+			sv.execute(request, response);
+			ui = "/project/dramaBuyList.jsp";
 		}
 		
 		else if(uri.equals("/dramaPrj/sign.do")) {

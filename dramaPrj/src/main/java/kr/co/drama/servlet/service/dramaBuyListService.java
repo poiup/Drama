@@ -9,12 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
-
+import kr.co.drama.buyinfoDAO;
 import kr.co.drama.favoriteDAO;
-import kr.co.drama.favoriteVO;
 
-public class FavoriteListService implements IDramaService{
+public class dramaBuyListService implements IDramaService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
@@ -25,9 +23,9 @@ public class FavoriteListService implements IDramaService{
 		int unum = Integer.parseInt(strunum);
 		System.out.println("유저 넘버 : "+strunum);
 		
-		favoriteDAO fdao = favoriteDAO.getInstance();
-		List<String[]> favoriteList = fdao.getFavoriteList(unum);
-		request.setAttribute("favoriteList",favoriteList);
+		buyinfoDAO bdao = buyinfoDAO.getInstance();
+		List<String[]> buyList = bdao.getBuyList(unum);
+		request.setAttribute("buyList",buyList);
 	}
 	
 }
