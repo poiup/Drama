@@ -18,6 +18,7 @@ import kr.co.drama.servlet.service.ComtUpdateFormService;
 import kr.co.drama.servlet.service.FavoriteListService;
 import kr.co.drama.servlet.service.FavortieDeleteService;
 import kr.co.drama.servlet.service.IDramaService;
+import kr.co.drama.servlet.service.dramaBuyListService;
 import kr.co.drama.servlet.service.dramaBuyService;
 import kr.co.drama.servlet.service.dramaDeleteService;
 import kr.co.drama.servlet.service.dramaDetailService;
@@ -122,6 +123,10 @@ public class FrontController extends HttpServlet {
 			sv = new FavortieDeleteService();
 			sv.execute(request, response);
 			ui = "/dramaDetail.do";
+		}   else if(uri.equals("/dramaPrj/dramaBuyList.do")) {
+			sv = new dramaBuyListService();
+			sv.execute(request, response);
+			ui = "/project/dramaBuyList.jsp";
 		}
 		
 		else if(uri.equals("/dramaPrj/sign.do")) {
