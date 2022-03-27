@@ -23,7 +23,7 @@
 			          	<li><a href="/dramaPrj/FavoriteList.do" onMouseOver='this.innerHTML="선호작"' onMouseOut='this.innerHTML="Favorite"'>Favorite</a></li>
 			          	<li><a href="/dramaPrj/dramaBuyList.do" onMouseOver='this.innerHTML="구매내역"' onMouseOut='this.innerHTML="BuyList"'>BuyList</a></li>
 			          	<li><a href="/dramaPrj/loginUpdateForm.do" onMouseOver='this.innerHTML="계정정보"' onMouseOut='this.innerHTML="Edit"'>Edit</a></li>
-			        	  <li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
+			        	 <li><a href="/dramaPrj/logout.do" onMouseOver='this.innerHTML="로그아웃"' onMouseOut='this.innerHTML="Log Out"'>Log Out</a></li>       
 					</c:if>
 						<!-- 비로그인 -->
 					<c:if test="${sessionScope.session_id eq null }">
