@@ -54,7 +54,7 @@ public class dramainfoDAO {
 			// 배우 이름이 null이 아니라면 실행
 			if(actname!=null) {
 				// 제일 높은 dnum( 제일 최근생성된 dnum)을 가져옴 
-				sql = "SELCET * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
+				sql = "SELECT * FROM dramainfo WHERE dnum = (SELECT max(dnum) from dramainfo)";
 				pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 				rs.next();

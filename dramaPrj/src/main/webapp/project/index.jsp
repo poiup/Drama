@@ -42,7 +42,7 @@
         It's a place where you can see it.<br>
         It is also a place where you can conversation<br>
         with many people through Korean dramas.</p>
-    <button><h3>Let's Go!</h3></button>
+    <button><a class="letsgo" href="/dramaPrj/dramaSearchPage.do"><h3>Let's Go!</h3></a></button>
   </div>
   </div>
 </body> 
